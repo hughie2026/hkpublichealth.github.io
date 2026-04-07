@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>香港公眾健康技術研究中心</title>
-  <meta
-    name="description"
-    content="香港公眾健康技術研究中心（Hong Kong Public Health Technology Research Center）官方網站"
-  />
+  <meta name="description" content="香港公眾健康技術研究中心（Hong Kong Public Health Technology Research Center）官方網站" />
   <style>
     :root {
       --primary: #0e4a84;
@@ -25,9 +22,7 @@
       --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -81,12 +76,12 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      max-width: 520px;
+      max-width: 560px;
       width: 100%;
     }
 
     .brand-logo img {
-      height: 74px;
+      height: 78px;
       width: auto;
       max-width: 100%;
       object-fit: contain;
@@ -139,9 +134,7 @@
       animation: fadeIn 0.35s ease;
     }
 
-    .page.active {
-      display: block;
-    }
+    .page.active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
@@ -162,7 +155,8 @@
     .contact-panel,
     .news-card,
     .image-panel,
-    .slogan-panel {
+    .slogan-panel,
+    .map-panel {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 28px;
@@ -177,30 +171,16 @@
     }
 
     .hero-side {
-      padding: 28px;
+      padding: 18px;
       overflow: hidden;
-      position: relative;
-      min-height: 100%;
     }
 
     .hero-side img {
       width: 100%;
       height: 100%;
-      min-height: 320px;
+      min-height: 360px;
       object-fit: cover;
       border-radius: 20px;
-    }
-
-    .hero-side .overlay {
-      position: absolute;
-      left: 42px;
-      bottom: 42px;
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--primary-dark);
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-weight: 700;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     .eyebrow {
@@ -287,13 +267,8 @@
       gap: 22px;
     }
 
-    .grid-2 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
     .card {
       padding: 28px;
@@ -354,12 +329,13 @@
 
     .about-layout {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 24px;
     }
 
     .about-text {
       padding: 30px;
+      white-space: pre-line;
     }
 
     .about-gallery {
@@ -373,7 +349,7 @@
 
     .image-panel img {
       width: 100%;
-      height: 260px;
+      height: 280px;
       object-fit: cover;
     }
 
@@ -419,15 +395,10 @@
       color: var(--muted);
     }
 
-    .news-tag {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--primary);
-      font-size: 0.86rem;
-      font-weight: 700;
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 22px;
     }
 
     .contact-panel {
@@ -452,6 +423,20 @@
     .contact-panel a {
       color: var(--primary);
       font-weight: 800;
+    }
+
+    .map-panel {
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .map-panel iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      display: block;
+      border-radius: 28px;
     }
 
     .slogan-panel {
@@ -482,7 +467,7 @@
     }
 
     .footer-inner {
-      min-height: 90px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -492,13 +477,10 @@
       padding: 18px 0;
     }
 
-    .footer-note {
-      max-width: 760px;
-    }
-
     @media (max-width: 1040px) {
       .hero,
       .about-layout,
+      .contact-layout,
       .grid-2,
       .grid-3 {
         grid-template-columns: 1fr;
@@ -506,9 +488,7 @@
     }
 
     @media (max-width: 980px) {
-      .menu-toggle {
-        display: inline-flex;
-      }
+      .menu-toggle { display: inline-flex; }
 
       .nav {
         display: none;
@@ -516,9 +496,7 @@
         padding-bottom: 12px;
       }
 
-      .nav.open {
-        display: flex;
-      }
+      .nav.open { display: flex; }
 
       .header-inner {
         flex-wrap: wrap;
@@ -541,14 +519,7 @@
         padding: 22px;
       }
 
-      .brand-logo img {
-        height: 54px;
-      }
-
-      .hero-side .overlay {
-        left: 30px;
-        bottom: 30px;
-      }
+      .brand-logo img { height: 56px; }
 
       .footer-inner {
         flex-direction: column;
@@ -581,7 +552,6 @@
 
   <main class="page-wrap">
     <div class="container">
-      <!-- 首頁 -->
       <section class="page active" id="page-home">
         <div class="hero">
           <div class="hero-main">
@@ -591,12 +561,10 @@
               香港公眾健康技術研究中心為經香港特別行政區政府批准設立、具獨立法人資格的第三方科研機構，
               由粵港澳大灣區公共衛生領域學者聯合發起，致力促進科研創新、專業咨詢、成果轉化與健康知識普及。
             </p>
-
             <div class="hero-actions">
               <button class="btn btn-primary" onclick="showPage('about')">了解中心</button>
               <button class="btn btn-secondary" onclick="showPage('news')">查看新聞</button>
             </div>
-
             <div class="stats">
               <div class="stats-item"><strong>正式成立：</strong>2025 年</div>
               <div class="stats-item"><strong>總部位置：</strong>香港尖沙咀亞士厘道</div>
@@ -605,11 +573,7 @@
           </div>
 
           <div class="hero-side">
-            <img
-              src="https://commons.wikimedia.org/wiki/Special:FilePath/Hong%20Kong%20Night%20Skyline.jpg"
-              alt="香港夜景"
-            />
-            <div class="overlay">Hong Kong Public Health Technology Research Center</div>
+            <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=1400&q=80" alt="健康科技主題視覺圖" />
           </div>
         </div>
 
@@ -637,7 +601,6 @@
         </div>
       </section>
 
-      <!-- 中心簡介 -->
       <section class="page" id="page-about">
         <div class="section-title">
           <h2>中心簡介</h2>
@@ -645,48 +608,31 @@
         </div>
 
         <div class="about-layout">
-          <div class="card about-text">
-            <h3>機構定位</h3>
-            <p>
-              香港公眾健康技術研究中心（Hong Kong Public Health Technology Research Center）於 2025 年正式成立，
-              為經香港特別行政區政府批准設立的獨立法人資格第三方科研機構。中心由來自粵港澳大灣區公共衛生領域的多位學者聯合發起，
-              總部位於香港尖沙咀亞士厘道，並在廣州、澳門設有分中心。
-            </p>
-            <p>
-              作為新成立的科研機構，中心正積極匯聚大灣區科研人才，組建涵蓋醫學、生物學、統計學、數據分析等領域的跨學科專業團隊，
-              為開展公眾健康技術研究、促進成果轉化以及提升公共衛生治理能力奠定堅實基礎。
-            </p>
+          <div class="card about-text">簡介：香港公眾健康技術研究中心（Hong Kong Public Health Technology Research Center）是經香港特別行政區政府批准設立的獨立法人資格第三方科研機構，於 2025 年正式成立，由來自粵港澳大灣區公共衛生領域的多位學者聯合發起，廣州、澳門設有分中心，總部位於香港尖沙咀亞士厘道。
 
-            <div class="pill-row">
-              <span class="pill">醫學</span>
-              <span class="pill">生物學</span>
-              <span class="pill">統計學</span>
-              <span class="pill">數據分析</span>
-              <span class="pill">跨學科協作</span>
-            </div>
-          </div>
+作為新成立的科研機構，中心正積極匯聚粵港澳大灣區的科研人才，組建跨學科的專業團隊，涵蓋醫學、生物學、統計學、數據分析等多個領域，為開展公眾健康技術研究奠定基礎。
+
+在公眾健康相關技術的研發領域，中心積極探索前沿科技的應用，如疾病早期篩查技術、智能健康監測系統、新型疾病防控策略等。同時，中心努力與高校、科研機構以及科技企業建立合作關係，以構建產學研一體化的創新生態，推動科研成果的轉化與落地。
+
+在咨詢服務方面，中心利用團隊的專業知識和經驗，為政府部門、醫療機構、企業等提供專業的建議和解決方案，助力提升公共衛生應對能力與管理效率。
+
+在推廣公眾健康技術與研究成果方面，中心通過舉辦學術會議、研討會、學術講座等方式，促進知識共享與技術傳播。同時，中心積極組織專業培訓課程與科普活動，面向不同群體普及公眾健康知識，提升公眾健康素養。
+
+面向未來，香港公眾健康技術研究中心將繼續堅守使命，以服務公眾健康為核心，不斷拓展研究領域，致力於成為具有一定影響力和專業水平的科研機構，為推動粵港澳大灣區乃至全國的公眾健康事業貢獻力量。</div>
 
           <div class="about-gallery">
             <div class="image-panel">
-              <img
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Hong%20Kong%20Night%20Skyline.jpg"
-                alt="香港維港夜景"
-              />
-              <div class="image-caption">香港維多利亞港夜景</div>
+              <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80" alt="健康研究主題圖片" />
+              <div class="image-caption">健康研究與跨學科協作主題視覺</div>
             </div>
-
             <div class="image-panel">
-              <img
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Skyline%20and%20Victoria%20Harbour%20at%20night%2C%20view%20from%20Victoria%20Peak%2C%20Hong%20Kong%2C%20China%20-%20%E9%A6%99%E6%B8%AF%EF%BC%8C%E4%B8%AD%E5%9B%BD%20%2819863406821%29.jpg"
-                alt="香港太平山頂遠望維港"
-              />
-              <div class="image-caption">太平山頂遠望香港與維多利亞港</div>
+              <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1400&q=80" alt="醫療科技主題圖片" />
+              <div class="image-caption">醫療科技與公共衛生應用主題視覺</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 研究方向 -->
       <section class="page" id="page-research">
         <div class="section-title">
           <h2>研究方向</h2>
@@ -709,10 +655,24 @@
             <h3>新型疾病防控策略</h3>
             <p>面向公共衛生實務需求，研究具前瞻性、可行性與實用性的防控方案。</p>
           </article>
+          <article class="card">
+            <div class="icon">🧬</div>
+            <h3>生物信息與健康數據研究</h3>
+            <p>整合多源健康數據與生物信息分析方法，提升人群健康研究與決策支持能力。</p>
+          </article>
+          <article class="card">
+            <div class="icon">📱</div>
+            <h3>數字健康干預技術</h3>
+            <p>探索移動健康、遠程管理及智慧平台在公眾健康服務中的應用模式與效果。</p>
+          </article>
+          <article class="card">
+            <div class="icon">🌍</div>
+            <h3>區域公共衛生協同治理</h3>
+            <p>圍繞灣區公共衛生協作需求，研究跨區域信息互通、資源協調與應急聯動機制。</p>
+          </article>
         </div>
       </section>
 
-      <!-- 服務推廣 -->
       <section class="page" id="page-services">
         <div class="section-title">
           <h2>服務推廣</h2>
@@ -723,112 +683,94 @@
           <div class="card">
             <div class="icon">🏛️</div>
             <h3>專業咨詢服務</h3>
-            <p>
-              中心依託團隊的專業知識與實務經驗，為政府部門、醫療機構及企業提供建議與解決方案，
-              協助提升公共衛生應對能力、組織決策效率及健康管理水平。
-            </p>
+            <p>中心依託團隊的專業知識與實務經驗，為政府部門、醫療機構及企業提供建議與解決方案，協助提升公共衛生應對能力、組織決策效率及健康管理水平。</p>
           </div>
-
           <div class="card">
             <div class="icon">🌐</div>
             <h3>成果推廣與合作</h3>
-            <p>
-              中心持續與高校、科研機構及科技企業建立合作關係，推動科研成果轉化與落地應用，
-              並透過學術會議、專題研討會與講座活動促進知識共享及技術交流。
-            </p>
+            <p>中心持續與高校、科研機構及科技企業建立合作關係，推動科研成果轉化與落地應用，並透過學術會議、專題研討會與講座活動促進知識共享及技術交流。</p>
           </div>
-
           <div class="card">
             <div class="icon">📚</div>
             <h3>專業培訓</h3>
-            <p>
-              針對不同專業群體設計培訓課程，提升公共衛生、健康科技及數據應用等方面的綜合能力。
-            </p>
+            <p>針對不同專業群體設計培訓課程，提升公共衛生、健康科技及數據應用等方面的綜合能力。</p>
           </div>
-
           <div class="card">
             <div class="icon">💡</div>
             <h3>健康科普活動</h3>
-            <p>
-              面向公眾推廣健康知識與防病理念，提升社會整體健康素養，強化公眾健康意識。
-            </p>
+            <p>面向公眾推廣健康知識與防病理念，提升社會整體健康素養，強化公眾健康意識。</p>
           </div>
         </div>
       </section>
 
-      <!-- 中心新聞 -->
       <section class="page" id="page-news">
         <div class="section-title">
           <h2>中心新聞</h2>
-          <p>以下為網站展示用的示例新聞內容，可先占位，之後再替換為正式發布資訊。</p>
+          <p>發布中心最新動態、學術交流、合作進展與研究工作資訊。</p>
         </div>
 
         <div class="news-list">
           <article class="news-card">
-            <div class="news-meta">2025-03-12 ・ 中心動態</div>
-            <h3>香港公眾健康技術研究中心正式啟動籌建期重點研究規劃</h3>
-            <p>
-              中心完成首階段發展藍圖梳理，將圍繞疾病早期篩查、健康監測技術及公共衛生數據應用等方向，
-              逐步開展研究布局，為未來跨地區合作奠定基礎。
-            </p>
-            <span class="news-tag">示例新聞</span>
+            <div class="news-meta">2025-11-18 ・ 中心動態</div>
+            <h3>香港公眾健康技術研究中心發布年度工作進展，持續推進灣區公共衛生科研協作</h3>
+            <p>香港公眾健康技術研究中心近日發布年度工作進展摘要，系統梳理了中心自成立以來在科研規劃、團隊建設、學術交流與合作對接等方面的重點工作。中心表示，將繼續以服務公眾健康為核心，圍繞疾病早期篩查、智能健康監測、新型疾病防控策略等方向深化研究布局，並積極推動研究成果轉化與跨區域協作機制建設。根據年度工作安排，中心目前正進一步完善跨學科人才體系，推進與高校、科研機構及科技企業的合作洽談，力求形成更具實效性的產學研協同模式。中心同時指出，未來將在促進灣區公共衛生資源共享、技術交流與專業服務方面持續發揮平台作用，為區域乃至更大範圍內的公眾健康事業發展提供支持。</p>
           </article>
 
           <article class="news-card">
-            <div class="news-meta">2025-04-08 ・ 學術交流</div>
-            <h3>中心舉辦首場公眾健康技術交流座談會</h3>
-            <p>
-              為促進灣區學者與專業人士交流合作，中心舉辦首場專題座談，
-              圍繞公共衛生技術創新、跨學科團隊建設及成果轉化模式進行討論。
-            </p>
-            <span class="news-tag">示例新聞</span>
-          </article>
-
-          <article class="news-card">
-            <div class="news-meta">2025-05-20 ・ 合作發展</div>
-            <h3>中心持續推進與高校及科研機構合作意向對接</h3>
-            <p>
-              中心近期與多個學術及科研單位展開交流，探索在研究合作、專業培訓、
-              技術轉化及公共衛生服務等方面建立長期協作機制。
-            </p>
-            <span class="news-tag">示例新聞</span>
-          </article>
-
-          <article class="news-card">
-            <div class="news-meta">2025-07-02 ・ 科普推廣</div>
-            <h3>中心規劃推出系列健康科普講座與專業培訓活動</h3>
-            <p>
-              為提升社會公眾健康素養及專業人員能力，中心正籌備多場面向不同群體的健康科普講座、
-              專題培訓與交流活動，推動知識共享與應用實踐。
-            </p>
-            <span class="news-tag">示例新聞</span>
+            <div class="news-meta">2025-10-06 ・ 學術交流</div>
+            <h3>中心舉辦公眾健康技術專題交流活動，聚焦智能監測與數據應用</h3>
+            <p>為加強學術互動與專業對話，香港公眾健康技術研究中心近日舉辦公眾健康技術專題交流活動，邀請來自公共衛生、醫療科技、統計分析及數據研究等領域的專業人士參與。活動圍繞智能健康監測系統、人群健康風險識別、公共衛生數據應用與科研合作機制等議題展開深入交流。與會人員就健康數據整合、風險預警模型應用、技術研發場景以及成果落地路徑交換意見，並就未來在技術共研、專業培訓、學術講座等方面的合作方向進行探討。中心表示，將繼續以系列交流活動作為推動知識共享的重要載體，進一步匯聚灣區科研力量，提升公眾健康技術創新和交流合作水平。</p>
           </article>
 
           <article class="news-card">
             <div class="news-meta">2025-08-15 ・ 研究布局</div>
-            <h3>中心發布年度研究方向建議框架</h3>
-            <p>
-              結合大灣區公共衛生發展需求與技術應用趨勢，中心梳理形成年度研究方向建議框架，
-              重點涵蓋疾病防控策略、健康監測系統與數據驅動決策支持等領域。
-            </p>
-            <span class="news-tag">示例新聞</span>
+            <h3>中心發布年度研究方向建議框架，聚焦早期篩查、監測預警與協同治理</h3>
+            <p>結合粵港澳大灣區公共衛生發展需求與健康科技應用趨勢，香港公眾健康技術研究中心近日形成並發布年度研究方向建議框架。該框架從疾病早期篩查技術、智能健康監測系統、新型疾病防控策略、生物信息與健康數據研究、數字健康干預技術以及區域公共衛生協同治理等多個方向提出研究重點，旨在為中心未來科研規劃、合作拓展與項目落地提供參考。中心表示，研究方向建議框架的形成，既是對當前公共衛生需求的回應，也是對未來技術應用與治理場景的前瞻布局。下一步，中心將在此基礎上進一步推進專題研究設計，並探索與有關合作單位開展更加緊密的聯動工作。</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">2025-07-02 ・ 科普推廣</div>
+            <h3>中心啟動健康科普與專業培訓籌備工作，推動知識傳播與能力建設</h3>
+            <p>為進一步推廣公眾健康知識、提升專業人員與社會公眾的健康素養，香港公眾健康技術研究中心近日啟動健康科普與專業培訓系列活動籌備工作。據介紹，相關活動將面向不同群體設計內容，包括公眾健康基礎知識普及、健康科技應用介紹、公共衛生應對能力提升以及數據分析方法交流等。中心指出，公眾健康事業的推進不僅需要科研創新，也需要知識普及與能力建設同步發展，因此未來將持續通過講座、研討會、專題培訓等方式，促進科研成果與健康理念在更廣範圍內傳播，推動形成良好的社會健康氛圍。</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">2025-05-20 ・ 合作發展</div>
+            <h3>中心持續推進與高校及科研機構合作對接，探索多層次協同創新模式</h3>
+            <p>香港公眾健康技術研究中心近期持續推進與高校、科研機構及科技企業的合作對接工作，圍繞研究合作、人才交流、技術轉化、專業咨詢與公共衛生服務等方向進行廣泛交流。中心表示，作為新成立的科研機構，建立多層次、跨領域的合作網絡是提升科研能力與成果應用水平的重要基礎。通過與不同合作主體的交流對接，中心正逐步完善產學研一體化的創新生態構想，期望在研究項目共建、技術資源互通與專業服務協同等方面形成更加穩固的合作機制，進一步提升中心在區域公眾健康發展中的支撐能力。</p>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">2025-04-08 ・ 中心活動</div>
+            <h3>中心舉辦首場公眾健康技術交流座談會，促進跨學科對話與合作</h3>
+            <p>香港公眾健康技術研究中心近日舉辦首場公眾健康技術交流座談會，邀請來自醫學、生物學、統計學、數據分析等不同領域的專業人士圍繞公眾健康技術創新與應用展開交流。座談會聚焦疾病防控需求、智能技術應用、科研協作模式以及成果轉化路徑等內容，與會人員就中心未來研究布局及合作方向提出建議。中心表示，舉辦交流座談活動旨在充分發揮平台優勢，促進跨學科資源聚合與觀點碰撞，並為後續研究項目設計、人才引進及合作拓展積累有益經驗。未來，中心將繼續定期組織不同形式的交流活動，推動建立更為開放、務實的合作環境。</p>
           </article>
         </div>
       </section>
 
-      <!-- 聯絡我們 -->
       <section class="page" id="page-contact">
         <div class="section-title">
           <h2>聯絡我們</h2>
           <p>歡迎就合作交流、專業咨詢、培訓活動及研究推廣等事項與我們聯繫。</p>
         </div>
 
-        <div class="contact-panel">
-          <div class="contact-item"><span class="contact-label">機構名稱：</span>香港公眾健康技術研究中心</div>
-          <div class="contact-item"><span class="contact-label">英文名稱：</span>Hong Kong Public Health Technology Research Center</div>
-          <div class="contact-item"><span class="contact-label">總部地址：</span>香港尖沙咀亞士厘道</div>
-          <div class="contact-item"><span class="contact-label">電子郵箱：</span><a href="mailto:service@epidemiology.hk">service@epidemiology.hk</a></div>
-          <div class="contact-item"><span class="contact-label">中心口號：</span>灣區協同，健康先行</div>
+        <div class="contact-layout">
+          <div class="contact-panel">
+            <div class="contact-item"><span class="contact-label">機構名稱：</span>香港公眾健康技術研究中心</div>
+            <div class="contact-item"><span class="contact-label">英文名稱：</span>Hong Kong Public Health Technology Research Center</div>
+            <div class="contact-item"><span class="contact-label">總部地址：</span>香港尖沙咀亞士厘道</div>
+            <div class="contact-item"><span class="contact-label">電子郵箱：</span><a href="mailto:service@epidemiology.hk">service@epidemiology.hk</a></div>
+            <div class="contact-item"><span class="contact-label">中心口號：</span>灣區協同，健康先行</div>
+          </div>
+
+          <div class="map-panel">
+            <iframe
+              title="香港尖沙咀亞士厘道地圖"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=114.1670%2C22.2940%2C114.1765%2C22.3025&layer=mapnik&marker=22.2982%2C114.1721"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
         </div>
       </section>
     </div>
@@ -836,13 +778,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
-        <div>© 2025 香港公眾健康技術研究中心. All rights reserved.</div>
-        <div>Hong Kong Public Health Technology Research Center</div>
-      </div>
-      <div class="footer-note">
-        圖片來源示例：Wikimedia Commons 可再利用圖片；正式上線前，建議按授權要求保留作者、授權類型及來源連結。
-      </div>
+      <div>© 2025 香港公眾健康技術研究中心. All rights reserved.</div>
+      <div>Hong Kong Public Health Technology Research Center</div>
     </div>
   </footer>
 
