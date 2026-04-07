@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>香港公眾健康技術研究中心</title>
+  <meta name="description" content="香港公眾健康技術研究中心（Hong Kong Public Health Technology Research Center）官方簡介頁面。" />
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --accent: #dff7f4;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(15, 118, 110, 0.08);
+      --radius: 20px;
+      --max-width: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 76px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #14b8a6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .brand-text span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+      background:
+        radial-gradient(circle at top left, rgba(20, 184, 166, 0.12), transparent 36%),
+        radial-gradient(circle at right, rgba(15, 118, 110, 0.1), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .button.primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .button.primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      background: var(--white);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 1px solid rgba(229, 231, 235, 0.7);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-card li {
+      padding: 14px 16px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+      border-radius: 16px;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-title {
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+      line-height: 1.25;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .intro-card,
+    .contact-card,
+    .slogan-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 30px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .intro-card p:last-child,
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 26px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .feature-card .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-dark);
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .slogan-card {
+      text-align: center;
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+      color: white;
+      padding: 40px 28px;
+    }
+
+    .slogan-card .cn {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .slogan-card .en {
+      font-size: 1rem;
+      opacity: 0.95;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-card a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .site-footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid var(--border);
+      padding-top: 22px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 48px;
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .intro-card,
+      .contact-card,
+      .slogan-card,
+      .feature-card,
+      .hero-card {
+        padding: 22px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="香港公眾健康技術研究中心首頁">
+        <div class="brand-logo">
+          <!-- 上傳 Logo 後，將 logo-placeholder.png 替換成你的檔名即可 -->
+          <img src="logo-placeholder.png" alt="香港公眾健康技術研究中心 Logo" onerror="this.style.display='none'; this.parentNode.textContent='健';" />
+        </div>
+        <div class="brand-text">
+          <strong>香港公眾健康技術研究中心</strong>
+          <span>Hong Kong Public Health Technology Research Center</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#about">中心簡介</a>
+        <a href="#research">研究方向</a>
+        <a href="#service">服務與推廣</a>
+        <a href="#contact">聯絡我們</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">灣區協同・健康先行</div>
+          <h1>以科研創新推動公眾健康發展</h1>
+          <p>
+            香港公眾健康技術研究中心為經香港特別行政區政府批准設立、具有獨立法人資格的第三方科研機構，
+            致力於整合粵港澳大灣區科研資源，推動公眾健康技術研發、成果轉化、專業諮詢與知識普及。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#about">了解中心</a>
+            <a class="button secondary" href="#contact">聯絡我們</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>中心重點</h3>
+          <ul>
+            <li><strong>正式成立：</strong>2025 年</li>
+            <li><strong>總部位置：</strong>香港尖沙咀亞士厘道</li>
+            <li><strong>區域布局：</strong>廣州、澳門設有分中心</li>
+            <li><strong>核心方向：</strong>科研、咨詢、推廣、培訓</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>中心簡介</h2>
+          <p>匯聚灣區智慧，建構跨學科協作平台，推動公眾健康技術研究與應用發展。</p>
+        </div>
+        <div class="intro-card">
+          <p>
+            香港公眾健康技術研究中心（Hong Kong Public Health Technology Research Center）於 2025 年正式成立，
+            由來自粵港澳大灣區公共衛生領域的多位學者聯合發起。中心總部位於香港尖沙咀亞士厘道，並於廣州、澳門設有分中心，
+            以區域協同模式推動學術研究、技術創新與資源整合。
+          </p>
+          <p>
+            作為新成立的科研機構，中心正積極匯聚大灣區科研人才，組建涵蓋醫學、生物學、統計學、數據分析等領域的跨學科專業團隊，
+            為開展公眾健康技術研究、促進成果轉化以及提升公共衛生治理能力奠定堅實基礎。
+          </p>
+          <div class="pill-list">
+            <span class="pill">醫學</span>
+            <span class="pill">生物學</span>
+            <span class="pill">統計學</span>
+            <span class="pill">數據分析</span>
+            <span class="pill">跨學科協作</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-title">
+          <h2>研究與創新方向</h2>
+          <p>聚焦前沿科技在公眾健康領域的應用，促進研發、合作與成果落地。</p>
+        </div>
+        <div class="grid-3">
+          <article class="feature-card">
+            <div class="icon">🔬</div>
+            <h3>疾病早期篩查技術</h3>
+            <p>積極探索疾病早期識別、風險評估與精準篩查等技術方向，提升早期干預能力。</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">📈</div>
+            <h3>智能健康監測系統</h3>
+            <p>結合數據分析與智能技術，推動健康監測、預警分析與人群健康管理模式創新。</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon">🛡️</div>
+            <h3>新型疾病防控策略</h3>
+            <p>圍繞公共衛生應急與防控需求，研究更具前瞻性、實用性與可落地性的解決方案。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="service">
+      <div class="container two-column">
+        <div class="feature-card">
+          <div class="icon">🤝</div>
+          <h3>產學研合作與咨詢服務</h3>
+          <p>
+            中心致力於與高校、科研機構及科技企業建立合作關係，構建產學研一體化創新生態。
+            同時依託團隊專業知識與實務經驗，為政府部門、醫療機構及企業提供專業建議與解決方案，
+            協助提升公共衛生應對能力及管理效率。
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎓</div>
+          <h3>成果推廣與公眾健康教育</h3>
+          <p>
+            中心通過舉辦學術會議、研討會、專題講座等形式促進知識共享與技術傳播，
+            並積極組織專業培訓課程及科普活動，面向不同群體普及公眾健康知識，提升社會整體健康素養。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="slogan-card">
+          <div class="cn">灣區協同，健康先行</div>
+          <div class="en">GREATER BAY HARMONY, HEALTH FUTURE PRIORITY</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>聯絡我們</h2>
+          <p>歡迎與香港公眾健康技術研究中心聯繫，洽談合作、咨詢服務及學術交流。</p>
+        </div>
+        <div class="contact-card">
+          <p><strong>機構名稱：</strong>香港公眾健康技術研究中心</p>
+          <p><strong>英文名稱：</strong>Hong Kong Public Health Technology Research Center</p>
+          <p><strong>總部地址：</strong>香港尖沙咀亞士厘道</p>
+          <p><strong>電子郵箱：</strong><a href="mailto:service@epidemiology.hk">service@epidemiology.hk</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 香港公眾健康技術研究中心. All rights reserved.</div>
+      <div>Hong Kong Public Health Technology Research Center</div>
+    </div>
+  </footer>
+</body>
+</html>
