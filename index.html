@@ -56,6 +56,7 @@
       letter-spacing: 0.04em;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     .topbar-inner {
       min-height: 38px;
       display: flex;
@@ -63,21 +64,26 @@
       justify-content: space-between;
       gap: 16px;
     }
+
     .topbar-left {
       letter-spacing: 0.08em;
       opacity: 0.85;
     }
+
     .topbar-right {
       display: flex;
       align-items: center;
       gap: 18px;
     }
+
     .topbar-right span,
     .topbar-right a {
       cursor: pointer;
       transition: color 0.2s;
     }
+
     .topbar-right a:hover { color: var(--gold); }
+
     .topbar-divider {
       width: 1px;
       height: 12px;
@@ -91,6 +97,7 @@
       top: 0;
       z-index: 100;
     }
+
     .header-top {
       display: flex;
       align-items: center;
@@ -98,28 +105,33 @@
       padding: 22px 0 18px;
       gap: 24px;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 18px;
       min-width: 0;
     }
+
     .brand-logo img {
       height: 64px;
       width: auto;
       display: block;
     }
+
     .brand-text {
       border-left: 1px solid var(--line);
       padding-left: 18px;
       line-height: 1.3;
     }
+
     .brand-cn {
       font-weight: 700;
       font-size: 1.18rem;
       color: var(--ink);
       letter-spacing: 0.04em;
     }
+
     .brand-en {
       font-size: 0.74rem;
       letter-spacing: 0.14em;
@@ -127,12 +139,14 @@
       color: var(--muted);
       margin-top: 4px;
     }
+
     .header-meta {
       text-align: right;
       font-size: 0.78rem;
       color: var(--muted);
       letter-spacing: 0.06em;
     }
+
     .header-meta strong {
       display: block;
       color: var(--ink);
@@ -156,29 +170,32 @@
     .nav-wrap {
       border-top: 1px solid var(--line-soft);
     }
+
     .nav {
       display: flex;
       align-items: stretch;
       gap: 0;
       flex-wrap: wrap;
     }
+
     .nav button {
       border: 0;
       background: transparent;
       color: var(--ink);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 700;
       letter-spacing: 0.12em;
-      padding: 18px 18px;
+      padding: 18px 17px;
       cursor: pointer;
       position: relative;
       transition: color 0.2s;
     }
+
     .nav button::after {
       content: "";
       position: absolute;
-      left: 18px;
-      right: 18px;
+      left: 17px;
+      right: 17px;
       bottom: 0;
       height: 2px;
       background: var(--crimson);
@@ -186,10 +203,13 @@
       transform-origin: left;
       transition: transform 0.3s ease;
     }
+
     .nav button:hover { color: var(--crimson); }
     .nav button.active { color: var(--crimson); }
     .nav button.active::after { transform: scaleX(1); }
+
     .nav button .nav-cn { display: block; }
+
     .nav button .nav-en {
       display: block;
       font-weight: 400;
@@ -199,11 +219,21 @@
       margin-top: 3px;
       text-transform: uppercase;
     }
-    .nav button.active .nav-en { color: var(--crimson); opacity: 0.75; }
+
+    .nav button.active .nav-en {
+      color: var(--crimson);
+      opacity: 0.75;
+    }
 
     .page-wrap { min-height: 60vh; }
-    .page { display: none; animation: fadeIn 0.5s ease; }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
     .page.active { display: block; }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
@@ -216,6 +246,7 @@
       overflow: hidden;
       border-bottom: 4px solid var(--crimson);
     }
+
     .hero::before {
       content: "";
       position: absolute;
@@ -225,6 +256,7 @@
         radial-gradient(circle at 15% 90%, rgba(139, 31, 47, 0.22), transparent 50%);
       pointer-events: none;
     }
+
     .hero-inner {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -233,6 +265,7 @@
       padding: 84px 0 96px;
       position: relative;
     }
+
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
@@ -244,12 +277,14 @@
       margin-bottom: 28px;
       font-weight: 600;
     }
+
     .hero-eyebrow::before {
       content: "";
       width: 36px;
       height: 1px;
       background: var(--gold);
     }
+
     .hero h1 {
       font-weight: 700;
       font-size: clamp(2.2rem, 4.6vw, 3.6rem);
@@ -257,10 +292,12 @@
       letter-spacing: 0.02em;
       margin: 0 0 26px;
     }
+
     .hero h1 em {
       color: var(--gold);
       font-weight: 700;
     }
+
     .hero-lead {
       font-size: 1.05rem;
       line-height: 1.95;
@@ -268,11 +305,13 @@
       margin: 0 0 36px;
       max-width: 60ch;
     }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -286,17 +325,29 @@
       padding: 16px 28px;
       transition: all 0.25s;
     }
+
     .btn-primary {
       background: var(--crimson);
       color: var(--white);
     }
-    .btn-primary:hover { background: #a52638; transform: translateY(-1px); }
+
+    .btn-primary:hover {
+      background: #a52638;
+      transform: translateY(-1px);
+    }
+
     .btn-ghost {
       background: transparent;
       color: var(--white);
       border: 1px solid rgba(255, 255, 255, 0.4);
     }
-    .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--gold); color: var(--gold); }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
     .btn .arrow { font-size: 1.1rem; }
 
     .hero-card {
@@ -306,22 +357,29 @@
       padding: 36px;
       position: relative;
     }
+
     .hero-card::before {
       content: "";
       position: absolute;
-      top: -1px; left: -1px;
-      width: 48px; height: 48px;
+      top: -1px;
+      left: -1px;
+      width: 48px;
+      height: 48px;
       border-top: 2px solid var(--gold);
       border-left: 2px solid var(--gold);
     }
+
     .hero-card::after {
       content: "";
       position: absolute;
-      bottom: -1px; right: -1px;
-      width: 48px; height: 48px;
+      bottom: -1px;
+      right: -1px;
+      width: 48px;
+      height: 48px;
       border-bottom: 2px solid var(--gold);
       border-right: 2px solid var(--gold);
     }
+
     .hero-card-label {
       color: var(--gold);
       font-size: 0.95rem;
@@ -329,6 +387,7 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
+
     .hero-card-title {
       font-size: 1.5rem;
       font-weight: 700;
@@ -336,11 +395,13 @@
       line-height: 1.4;
       letter-spacing: 0.04em;
     }
+
     .hero-card-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .hero-card-list li {
       padding: 14px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -349,25 +410,41 @@
       align-items: center;
       font-size: 0.92rem;
     }
+
     .hero-card-list li:last-child { border-bottom: none; }
-    .hero-card-list .label { color: rgba(255, 255, 255, 0.7); letter-spacing: 0.08em; font-size: 0.78rem; text-transform: uppercase; }
-    .hero-card-list .value { font-size: 1.05rem; color: var(--white); font-weight: 600; }
+
+    .hero-card-list .label {
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .hero-card-list .value {
+      font-size: 1.05rem;
+      color: var(--white);
+      font-weight: 600;
+    }
 
     .stats-strip {
       background: var(--white);
       border-bottom: 1px solid var(--line);
     }
+
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0;
     }
+
     .stat {
       padding: 44px 28px;
       text-align: center;
       border-right: 1px solid var(--line-soft);
     }
+
     .stat:last-child { border-right: none; }
+
     .stat-num {
       font-size: 2.8rem;
       font-weight: 700;
@@ -376,10 +453,12 @@
       margin-bottom: 12px;
       letter-spacing: 0.02em;
     }
+
     .stat-num sup {
       font-size: 1.2rem;
       color: var(--crimson);
     }
+
     .stat-label {
       font-size: 0.78rem;
       letter-spacing: 0.18em;
@@ -392,11 +471,13 @@
       padding: 88px 0;
       background: var(--paper);
     }
+
     .section-alt {
       background: var(--white);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
+
     .section-dark {
       background: var(--ink);
       color: var(--white);
@@ -411,6 +492,7 @@
       padding-bottom: 28px;
       border-bottom: 1px solid var(--line);
     }
+
     .section-eyebrow {
       font-size: 0.78rem;
       letter-spacing: 0.22em;
@@ -419,9 +501,11 @@
       margin-bottom: 16px;
       font-weight: 700;
     }
+
     .section-eyebrow::before {
       content: "§ ";
     }
+
     .section-title-h2 {
       font-weight: 700;
       font-size: clamp(1.8rem, 3.4vw, 2.5rem);
@@ -430,13 +514,19 @@
       color: var(--ink);
       letter-spacing: 0.02em;
     }
-    .section-title-h2 em { color: var(--crimson); font-weight: 700; }
+
+    .section-title-h2 em {
+      color: var(--crimson);
+      font-weight: 700;
+    }
+
     .section-desc {
       font-size: 1.02rem;
       color: var(--text-2);
       line-height: 1.95;
       margin: 0;
     }
+
     .section-dark .section-title-h2 { color: var(--white); }
     .section-dark .section-desc { color: rgba(255, 255, 255, 0.78); }
     .section-dark .section-head { border-bottom-color: rgba(255, 255, 255, 0.18); }
@@ -448,6 +538,7 @@
       border-top: 1px solid var(--line);
       border-left: 1px solid var(--line);
     }
+
     .pillar {
       padding: 36px 32px;
       border-right: 1px solid var(--line);
@@ -456,7 +547,9 @@
       transition: background 0.3s;
       cursor: pointer;
     }
+
     .pillar:hover { background: var(--bone); }
+
     .pillar-num {
       color: var(--crimson);
       font-size: 0.84rem;
@@ -465,6 +558,7 @@
       font-weight: 600;
       text-transform: uppercase;
     }
+
     .pillar h3 {
       font-weight: 700;
       font-size: 1.25rem;
@@ -473,6 +567,7 @@
       line-height: 1.4;
       letter-spacing: 0.02em;
     }
+
     .pillar p {
       color: var(--text-2);
       font-size: 0.95rem;
@@ -485,13 +580,16 @@
       grid-template-columns: 1.4fr 1fr 1fr;
       gap: 32px;
     }
+
     .news-feature {
       background: var(--white);
       border: 1px solid var(--line);
       padding: 0;
       display: flex;
       flex-direction: column;
+      cursor: pointer;
     }
+
     .news-feature-img {
       background: linear-gradient(135deg, var(--ink) 0%, var(--ink-3) 100%);
       height: 240px;
@@ -505,6 +603,7 @@
       font-size: 0.92rem;
       text-transform: uppercase;
     }
+
     .news-feature-img::before {
       content: "";
       position: absolute;
@@ -514,7 +613,9 @@
         linear-gradient(90deg, rgba(176, 141, 79, 0.06) 1px, transparent 1px);
       background-size: 40px 40px;
     }
+
     .news-feature-body { padding: 28px; }
+
     .news-tag {
       display: inline-block;
       font-size: 0.72rem;
@@ -524,12 +625,14 @@
       font-weight: 700;
       margin-bottom: 10px;
     }
+
     .news-date {
       color: var(--muted);
       font-size: 0.92rem;
       margin-bottom: 14px;
       letter-spacing: 0.06em;
     }
+
     .news-feature h3 {
       font-weight: 700;
       font-size: 1.3rem;
@@ -538,12 +641,14 @@
       color: var(--ink);
       letter-spacing: 0.02em;
     }
+
     .news-feature p {
       color: var(--text-2);
       font-size: 0.95rem;
       margin: 0 0 18px;
       line-height: 1.85;
     }
+
     .read-more {
       color: var(--crimson);
       font-size: 0.86rem;
@@ -555,6 +660,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+
     .read-more:hover { text-decoration: underline; }
 
     .news-list-mini {
@@ -562,14 +668,17 @@
       flex-direction: column;
       gap: 0;
     }
+
     .news-mini-item {
       padding: 20px 0;
       border-bottom: 1px solid var(--line);
       cursor: pointer;
     }
+
     .news-mini-item:first-child { padding-top: 0; }
     .news-mini-item:last-child { border-bottom: none; }
     .news-mini-item .news-tag { margin-bottom: 6px; font-size: 0.68rem; }
+
     .news-mini-item h4 {
       font-size: 1rem;
       font-weight: 700;
@@ -579,7 +688,9 @@
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
+
     .news-mini-item:hover h4 { color: var(--crimson); }
+
     .news-mini-date {
       color: var(--muted);
       font-size: 0.85rem;
@@ -592,12 +703,14 @@
       gap: 60px;
       align-items: center;
     }
+
     .quote-mark {
       font-size: 8rem;
       line-height: 0.7;
       color: var(--gold);
       font-weight: 700;
     }
+
     .quote-text {
       font-size: clamp(1.25rem, 2.2vw, 1.65rem);
       line-height: 1.75;
@@ -606,6 +719,7 @@
       font-weight: 400;
       letter-spacing: 0.03em;
     }
+
     .quote-author {
       font-size: 0.86rem;
       letter-spacing: 0.16em;
@@ -613,6 +727,7 @@
       color: var(--gold);
       font-weight: 600;
     }
+
     .quote-author span {
       display: block;
       color: rgba(255, 255, 255, 0.65);
@@ -631,16 +746,20 @@
       position: relative;
       overflow: hidden;
     }
+
     .page-banner::before {
       content: "";
       position: absolute;
-      top: 0; right: 0;
+      top: 0;
+      right: 0;
       width: 40%;
       height: 100%;
       background:
         repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(176, 141, 79, 0.05) 12px, rgba(176, 141, 79, 0.05) 13px);
     }
+
     .page-banner .container { position: relative; }
+
     .breadcrumb {
       font-size: 0.78rem;
       letter-spacing: 0.16em;
@@ -649,8 +768,10 @@
       margin-bottom: 18px;
       font-weight: 600;
     }
+
     .breadcrumb a { cursor: pointer; }
     .breadcrumb a:hover { color: var(--gold); }
+
     .page-banner h1 {
       font-weight: 700;
       font-size: clamp(2rem, 4vw, 3rem);
@@ -658,7 +779,12 @@
       margin: 0 0 12px;
       letter-spacing: 0.04em;
     }
-    .page-banner h1 em { color: var(--gold); font-weight: 700; }
+
+    .page-banner h1 em {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
     .page-banner-sub {
       font-size: 1rem;
       color: rgba(255, 255, 255, 0.7);
@@ -672,10 +798,12 @@
       gap: 80px;
       align-items: start;
     }
+
     .about-side {
       position: sticky;
       top: 180px;
     }
+
     .about-side h3 {
       font-size: 1.05rem;
       color: var(--crimson);
@@ -684,12 +812,14 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
+
     .toc {
       list-style: none;
       padding: 0;
       margin: 0;
       border-left: 1px solid var(--line);
     }
+
     .toc li {
       padding: 10px 0 10px 18px;
       font-size: 0.94rem;
@@ -699,7 +829,12 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .toc li:hover { color: var(--crimson); border-left-color: var(--crimson); }
+
+    .toc li:hover {
+      color: var(--crimson);
+      border-left-color: var(--crimson);
+    }
+
     .toc li .num {
       color: var(--muted);
       margin-right: 10px;
@@ -708,6 +843,7 @@
 
     .article-block { margin-bottom: 56px; }
     .article-block:last-child { margin-bottom: 0; }
+
     .article-num {
       color: var(--crimson);
       font-size: 0.86rem;
@@ -716,6 +852,7 @@
       font-weight: 700;
       text-transform: uppercase;
     }
+
     .article-block h2 {
       font-weight: 700;
       font-size: 1.7rem;
@@ -726,12 +863,14 @@
       padding-bottom: 16px;
       border-bottom: 1px solid var(--line);
     }
+
     .article-block p {
       font-size: 1.02rem;
       line-height: 1.95;
       color: var(--text-2);
       margin: 0 0 18px;
     }
+
     .pull-quote {
       border-left: 3px solid var(--crimson);
       padding: 8px 0 8px 24px;
@@ -749,7 +888,12 @@
       border-left: 1px solid var(--line);
       margin-top: 28px;
     }
-    .timeline-item { padding-bottom: 28px; position: relative; }
+
+    .timeline-item {
+      padding-bottom: 28px;
+      position: relative;
+    }
+
     .timeline-item::before {
       content: "";
       position: absolute;
@@ -762,12 +906,14 @@
       border: 2px solid var(--paper);
       box-shadow: 0 0 0 1px var(--crimson);
     }
+
     .timeline-year {
       color: var(--crimson);
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.08em;
     }
+
     .timeline-text {
       font-size: 0.98rem;
       color: var(--text-2);
@@ -781,11 +927,13 @@
       gap: 24px;
       margin-top: 24px;
     }
+
     .gov-card {
       background: var(--white);
       border: 1px solid var(--line);
       padding: 24px;
     }
+
     .gov-card .gov-tag {
       font-size: 0.72rem;
       letter-spacing: 0.18em;
@@ -794,6 +942,7 @@
       font-weight: 700;
       margin-bottom: 10px;
     }
+
     .gov-card h4 {
       font-size: 1.1rem;
       color: var(--ink);
@@ -801,6 +950,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
     }
+
     .gov-card p {
       font-size: 0.92rem;
       color: var(--text-2);
@@ -816,15 +966,18 @@
       padding-bottom: 48px;
       border-bottom: 1px solid var(--line);
     }
+
     .research-intro p {
       font-size: 1.05rem;
       line-height: 1.95;
       color: var(--text-2);
     }
+
     .research-list {
       display: flex;
       flex-direction: column;
     }
+
     .research-row {
       display: grid;
       grid-template-columns: 80px 1fr 2.4fr;
@@ -834,7 +987,13 @@
       align-items: start;
       transition: background 0.3s, padding 0.3s;
     }
-    .research-row:hover { background: var(--bone); padding-left: 16px; padding-right: 16px; }
+
+    .research-row:hover {
+      background: var(--bone);
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
     .research-num {
       font-size: 2rem;
       color: var(--crimson);
@@ -842,6 +1001,7 @@
       font-weight: 700;
       letter-spacing: 0.02em;
     }
+
     .research-row h3 {
       font-size: 1.4rem;
       font-weight: 700;
@@ -850,23 +1010,27 @@
       line-height: 1.4;
       letter-spacing: 0.02em;
     }
+
     .research-row .en-title {
       font-size: 0.92rem;
       color: var(--muted);
       letter-spacing: 0.04em;
     }
+
     .research-row p {
       font-size: 0.98rem;
       color: var(--text-2);
       line-height: 1.9;
       margin: 0 0 14px;
     }
+
     .research-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
     }
+
     .research-tag {
       font-size: 0.74rem;
       letter-spacing: 0.1em;
@@ -884,12 +1048,14 @@
       gap: 24px;
       margin-top: 32px;
     }
+
     .method-item {
       padding: 28px 24px;
       background: var(--white);
       border-top: 3px solid var(--crimson);
       border-bottom: 1px solid var(--line);
     }
+
     .method-item h4 {
       font-size: 1.05rem;
       color: var(--ink);
@@ -897,6 +1063,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
     }
+
     .method-item p {
       font-size: 0.92rem;
       color: var(--text-2);
@@ -911,6 +1078,7 @@
       border-top: 1px solid var(--line);
       border-left: 1px solid var(--line);
     }
+
     .service-item {
       padding: 44px 36px;
       border-right: 1px solid var(--line);
@@ -918,6 +1086,7 @@
       background: var(--white);
       position: relative;
     }
+
     .service-item-num {
       position: absolute;
       top: 28px;
@@ -927,6 +1096,7 @@
       line-height: 1;
       font-weight: 700;
     }
+
     .service-item h3 {
       font-size: 1.3rem;
       font-weight: 700;
@@ -934,23 +1104,27 @@
       margin: 0 0 6px;
       letter-spacing: 0.04em;
     }
+
     .service-item .service-en {
       color: var(--muted);
       font-size: 0.9rem;
       margin-bottom: 18px;
       letter-spacing: 0.06em;
     }
+
     .service-item p {
       color: var(--text-2);
       font-size: 0.96rem;
       line-height: 1.95;
       margin: 0;
     }
+
     .service-item ul {
       margin: 14px 0 0;
       padding: 0;
       list-style: none;
     }
+
     .service-item ul li {
       padding: 6px 0 6px 20px;
       position: relative;
@@ -958,6 +1132,7 @@
       color: var(--text-2);
       line-height: 1.85;
     }
+
     .service-item ul li::before {
       content: "—";
       position: absolute;
@@ -973,6 +1148,7 @@
       border: 1px solid var(--line);
       text-align: center;
     }
+
     .partners-label {
       font-size: 0.78rem;
       letter-spacing: 0.22em;
@@ -981,6 +1157,7 @@
       margin-bottom: 22px;
       font-weight: 600;
     }
+
     .partners-list {
       display: flex;
       flex-wrap: wrap;
@@ -988,12 +1165,14 @@
       justify-content: center;
       align-items: center;
     }
+
     .partner-name {
       font-size: 1rem;
       color: var(--ink);
       letter-spacing: 0.06em;
       font-weight: 600;
     }
+
     .partner-divider {
       width: 1px;
       height: 16px;
@@ -1007,6 +1186,7 @@
       border-top: 1px solid var(--line);
       border-left: 1px solid var(--line);
     }
+
     .expert-card {
       background: var(--white);
       border-right: 1px solid var(--line);
@@ -1016,17 +1196,22 @@
       flex-direction: column;
       min-height: 100%;
     }
+
     .expert-card:hover {
       background: var(--bone);
       transform: translateY(-2px);
     }
+
     .expert-photo {
-      height: 280px;
-      background: linear-gradient(135deg, var(--bone) 0%, var(--white) 100%);
-      border-bottom: 1px solid var(--line-soft);
+      width: 180px;
+      aspect-ratio: 3 / 4;
+      margin: 30px auto 0;
+      background: var(--paper);
+      border: 1px solid var(--line-soft);
       overflow: hidden;
       position: relative;
     }
+
     .expert-photo::after {
       content: "";
       position: absolute;
@@ -1035,18 +1220,22 @@
       pointer-events: none;
       opacity: 0.85;
     }
+
     .expert-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      object-fit: contain;
+      object-position: center center;
+      background: var(--paper);
     }
+
     .expert-body {
-      padding: 30px 28px 32px;
+      padding: 26px 28px 32px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
+
     .expert-index {
       color: var(--crimson);
       font-size: 0.78rem;
@@ -1055,6 +1244,7 @@
       font-weight: 700;
       margin-bottom: 10px;
     }
+
     .expert-name {
       font-size: 1.32rem;
       color: var(--ink);
@@ -1063,6 +1253,7 @@
       font-weight: 700;
       letter-spacing: 0.03em;
     }
+
     .expert-role {
       color: var(--muted);
       font-size: 0.92rem;
@@ -1071,6 +1262,7 @@
       padding-bottom: 18px;
       border-bottom: 1px solid var(--line-soft);
     }
+
     .expert-field-label {
       font-size: 0.72rem;
       letter-spacing: 0.18em;
@@ -1079,12 +1271,14 @@
       font-weight: 700;
       margin-bottom: 8px;
     }
+
     .expert-fields {
       color: var(--text-2);
       font-size: 0.96rem;
       line-height: 1.9;
       margin: 0;
     }
+
     .expert-note {
       margin-top: 48px;
       padding: 28px 32px;
@@ -1097,6 +1291,7 @@
       line-height: 1.9;
       font-size: 1rem;
     }
+
     .expert-note strong {
       color: var(--ink);
       letter-spacing: 0.04em;
@@ -1108,19 +1303,28 @@
       gap: 64px;
       align-items: start;
     }
+
     .news-list {
       display: flex;
       flex-direction: column;
     }
+
     .news-article {
       padding: 28px 0;
       border-bottom: 1px solid var(--line);
       cursor: pointer;
       transition: padding 0.3s, background 0.3s;
     }
+
     .news-article:first-child { padding-top: 0; }
     .news-article:hover { padding-left: 12px; }
-    .news-article.active { background: var(--white); padding: 28px 20px; border-left: 3px solid var(--crimson); }
+
+    .news-article.active {
+      background: var(--white);
+      padding: 28px 20px;
+      border-left: 3px solid var(--crimson);
+    }
+
     .news-article-meta {
       display: flex;
       align-items: center;
@@ -1128,6 +1332,7 @@
       margin-bottom: 10px;
       flex-wrap: wrap;
     }
+
     .news-article-cat {
       font-size: 0.72rem;
       letter-spacing: 0.18em;
@@ -1135,12 +1340,15 @@
       color: var(--crimson);
       font-weight: 700;
     }
+
     .news-article-meta-divider { color: var(--line); }
+
     .news-article-date {
       color: var(--muted);
       font-size: 0.92rem;
       letter-spacing: 0.06em;
     }
+
     .news-article h3 {
       font-weight: 700;
       font-size: 1.18rem;
@@ -1150,6 +1358,7 @@
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
+
     .news-article:hover h3,
     .news-article.active h3 { color: var(--crimson); }
 
@@ -1163,6 +1372,7 @@
       border-top: 1px solid var(--line);
       flex-wrap: wrap;
     }
+
     .pagination button {
       border: 1px solid var(--line);
       background: var(--white);
@@ -1176,12 +1386,18 @@
       cursor: pointer;
       transition: all 0.2s;
     }
+
     .pagination button:hover:not(:disabled) {
       background: var(--ink);
       color: var(--white);
       border-color: var(--ink);
     }
-    .pagination button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .pagination button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
     .pagination-info {
       color: var(--muted);
       font-size: 0.9rem;
@@ -1195,6 +1411,7 @@
       position: sticky;
       top: 180px;
     }
+
     .news-detail-meta {
       font-size: 0.76rem;
       letter-spacing: 0.18em;
@@ -1203,6 +1420,7 @@
       font-weight: 700;
       margin-bottom: 14px;
     }
+
     .news-detail h2 {
       font-weight: 700;
       font-size: clamp(1.3rem, 2.2vw, 1.7rem);
@@ -1211,12 +1429,14 @@
       color: var(--ink);
       letter-spacing: 0.02em;
     }
+
     .news-detail-divider {
       width: 60px;
       height: 2px;
       background: var(--crimson);
       margin: 0 0 24px;
     }
+
     .news-detail p {
       font-size: 1rem;
       line-height: 1.95;
@@ -1231,10 +1451,12 @@
       border: 1px solid var(--line);
       background: var(--white);
     }
+
     .contact-info {
       padding: 48px 44px;
       border-right: 1px solid var(--line);
     }
+
     .contact-info h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -1242,6 +1464,7 @@
       margin: 0 0 6px;
       letter-spacing: 0.04em;
     }
+
     .contact-info-en {
       color: var(--muted);
       margin-bottom: 28px;
@@ -1250,6 +1473,7 @@
       border-bottom: 1px solid var(--line);
       letter-spacing: 0.06em;
     }
+
     .contact-row {
       display: grid;
       grid-template-columns: 110px 1fr;
@@ -1258,7 +1482,9 @@
       border-bottom: 1px solid var(--line-soft);
       font-size: 0.96rem;
     }
+
     .contact-row:last-of-type { border-bottom: 0; }
+
     .contact-row .label {
       font-size: 0.74rem;
       letter-spacing: 0.16em;
@@ -1267,12 +1493,35 @@
       padding-top: 4px;
       font-weight: 600;
     }
-    .contact-row .value { color: var(--ink); line-height: 1.7; }
-    .contact-row .value .secondary { color: var(--muted); font-size: 0.88rem; display: block; margin-top: 2px; }
-    .contact-row .value a { color: var(--crimson); border-bottom: 1px solid var(--crimson); }
 
-    .contact-map { min-height: 480px; position: relative; }
-    .contact-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .contact-row .value {
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    .contact-row .value .secondary {
+      color: var(--muted);
+      font-size: 0.88rem;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .contact-row .value a {
+      color: var(--crimson);
+      border-bottom: 1px solid var(--crimson);
+    }
+
+    .contact-map {
+      min-height: 480px;
+      position: relative;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
 
     .branches {
       display: grid;
@@ -1282,12 +1531,14 @@
       border-top: 1px solid var(--line);
       border-left: 1px solid var(--line);
     }
+
     .branch {
       padding: 32px 28px;
       border-right: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       background: var(--white);
     }
+
     .branch-tag {
       font-size: 0.72rem;
       letter-spacing: 0.2em;
@@ -1296,6 +1547,7 @@
       font-weight: 700;
       margin-bottom: 10px;
     }
+
     .branch h4 {
       font-size: 1.15rem;
       color: var(--ink);
@@ -1303,13 +1555,20 @@
       font-weight: 700;
       letter-spacing: 0.04em;
     }
+
     .branch .branch-en {
       color: var(--muted);
       font-size: 0.9rem;
       margin-bottom: 12px;
       letter-spacing: 0.06em;
     }
-    .branch p { font-size: 0.92rem; color: var(--text-2); margin: 0; line-height: 1.8; }
+
+    .branch p {
+      font-size: 0.92rem;
+      color: var(--text-2);
+      margin: 0;
+      line-height: 1.8;
+    }
 
     .site-footer {
       background: var(--ink);
@@ -1317,6 +1576,7 @@
       padding: 64px 0 0;
       margin-top: 64px;
     }
+
     .footer-grid {
       display: grid;
       grid-template-columns: 1.6fr 1fr 1fr 1fr;
@@ -1324,6 +1584,7 @@
       padding-bottom: 48px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
+
     .footer-brand-cn {
       font-size: 1.2rem;
       color: var(--white);
@@ -1331,18 +1592,21 @@
       margin-bottom: 6px;
       letter-spacing: 0.04em;
     }
+
     .footer-brand-en {
       color: var(--gold);
       font-size: 0.92rem;
       margin-bottom: 18px;
       letter-spacing: 0.06em;
     }
+
     .footer-desc {
       font-size: 0.92rem;
       line-height: 1.95;
       color: rgba(255, 255, 255, 0.65);
       max-width: 36ch;
     }
+
     .footer-col h5 {
       font-size: 0.78rem;
       letter-spacing: 0.2em;
@@ -1351,11 +1615,13 @@
       margin: 0 0 18px;
       font-weight: 700;
     }
+
     .footer-col ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .footer-col ul li {
       padding: 6px 0;
       font-size: 0.92rem;
@@ -1363,6 +1629,7 @@
       cursor: pointer;
       transition: color 0.2s;
     }
+
     .footer-col ul li:hover { color: var(--gold); }
 
     .footer-bottom {
@@ -1375,6 +1642,7 @@
       color: rgba(255, 255, 255, 0.5);
       flex-wrap: wrap;
     }
+
     .footer-motto {
       color: var(--gold);
       letter-spacing: 0.12em;
@@ -1388,54 +1656,130 @@
       .quote-block,
       .research-intro,
       .home-news-grid,
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
       .stat:nth-child(2) { border-right: none; }
-      .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line-soft); }
+
+      .stat:nth-child(1),
+      .stat:nth-child(2) {
+        border-bottom: 1px solid var(--line-soft);
+      }
+
       .pillar-grid { grid-template-columns: repeat(2, 1fr); }
-      .gov-grid, .branches, .expert-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .gov-grid,
+      .branches,
+      .expert-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .method-grid { grid-template-columns: repeat(2, 1fr); }
+
       .footer-grid { grid-template-columns: 1fr 1fr; }
+
       .about-side { position: static; }
+
       .news-detail { position: static; }
-      .contact-info { border-right: 0; border-bottom: 1px solid var(--line); }
-      .section-head { grid-template-columns: 1fr; gap: 20px; }
+
+      .contact-info {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
     }
 
     @media (max-width: 720px) {
       .container { width: calc(100% - 32px); }
+
       .menu-toggle { display: inline-flex; }
+
       .header-meta { display: none; }
+
       .nav-wrap { display: none; }
+
       .nav-wrap.open { display: block; }
+
       .nav { flex-direction: column; }
-      .nav button { padding: 14px 0; border-bottom: 1px solid var(--line-soft); text-align: left; }
+
+      .nav button {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line-soft);
+        text-align: left;
+      }
+
       .nav button::after { display: none; }
+
       .brand-text { display: none; }
+
       .section { padding: 56px 0; }
+
       .pillar-grid,
       .service-grid,
       .gov-grid,
       .branches,
       .method-grid,
       .expert-grid,
-      .stats-grid { grid-template-columns: 1fr; }
-      .stat { border-right: none; border-bottom: 1px solid var(--line-soft); }
-      .research-row { grid-template-columns: 1fr; gap: 16px; padding: 28px 0; }
-      .research-row:hover { padding-left: 0; padding-right: 0; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .contact-info, .news-detail { padding: 28px; }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid var(--line-soft);
+      }
+
+      .research-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 28px 0;
+      }
+
+      .research-row:hover {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .contact-info,
+      .news-detail {
+        padding: 28px;
+      }
+
       .article-block h2 { font-size: 1.4rem; }
+
       .topbar-left { display: none; }
+
       .quote-mark { font-size: 5rem; }
+
       .news-feature-img { height: 180px; }
-      .expert-photo { height: 260px; }
-      .expert-body { padding: 26px 24px 28px; }
+
+      .expert-photo {
+        width: 160px;
+        aspect-ratio: 3 / 4;
+        margin-top: 26px;
+      }
+
+      .expert-body {
+        padding: 24px 24px 28px;
+      }
     }
   </style>
 </head>
-<body>
 
+<body>
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="topbar-left">Hong Kong Public Health Technology Research Center · Established 2025</div>
@@ -1461,13 +1805,16 @@
             <div class="brand-en">Public Health Technology · Research Center</div>
           </div>
         </a>
+
         <div class="header-meta">
           <strong>HKPHTRC</strong>
-          總部 · 香港尖沙咀亞士厘道<br/>
+          總部 · 香港尖沙咀亞士厘道<br />
           分中心 · 廣州 / 澳門
         </div>
+
         <button class="menu-toggle" onclick="toggleMenu()" aria-label="切換選單">≡ MENU</button>
       </div>
+
       <div class="nav-wrap" id="navWrap">
         <nav class="nav container">
           <button class="active" data-page="home" onclick="showPage('home')">
@@ -1476,7 +1823,7 @@
           </button>
           <button data-page="about" onclick="showPage('about')">
             <span class="nav-cn">中心概覽</span>
-            <span class="nav-en">About the Center</span>
+            <span class="nav-en">About</span>
           </button>
           <button data-page="research" onclick="showPage('research')">
             <span class="nav-cn">研究領域</span>
@@ -1504,14 +1851,12 @@
   </header>
 
   <main class="page-wrap">
-
     <section class="page active" id="page-home">
-
       <div class="hero">
         <div class="container hero-inner">
           <div>
             <div class="hero-eyebrow">SCIENCE FOR PUBLIC HEALTH · 灣區協同 健康先行</div>
-            <h1>以跨學科科學方法，<br/>推進<em>公眾健康技術</em>之循證創新</h1>
+            <h1>以跨學科科學方法，<br />推進<em>公眾健康技術</em>之循證創新</h1>
             <p class="hero-lead">
               香港公眾健康技術研究中心（HKPHTRC）為香港特別行政區政府批准設立、
               具獨立法人資格之第三方科研機構。中心匯聚粵港澳大灣區公共衛生領域學者，
@@ -1519,7 +1864,7 @@
             </p>
             <div class="hero-actions">
               <button class="btn btn-primary" onclick="showPage('research')">研究領域 <span class="arrow">→</span></button>
-              <button class="btn btn-ghost" onclick="showPage('about')">中心概覽 <span class="arrow">→</span></button>
+              <button class="btn btn-ghost" onclick="showPage('experts')">專家顧問 <span class="arrow">→</span></button>
             </div>
           </div>
 
@@ -1565,7 +1910,7 @@
           <div class="section-head">
             <div>
               <div class="section-eyebrow">Research Programmes</div>
-              <h2 class="section-title-h2">面向公共衛生實務的<br/><em>核心研究方向</em></h2>
+              <h2 class="section-title-h2">面向公共衛生實務的<br /><em>核心研究方向</em></h2>
             </div>
             <p class="section-desc">
               中心聚焦六大研究支柱，圍繞早期識別、智能監測、防控策略、生物信息、數字健康干預與區域治理，
@@ -1616,7 +1961,7 @@
               <h2 class="section-title-h2">最新<em>動態</em>與學術交流</h2>
             </div>
             <p class="section-desc">
-              中心透過學術會議、專題研討、合作對接與科普活動，持續推動公眾健康知識共享與技術傳播。<br/>
+              中心透過學術會議、專題研討、合作對接與科普活動，持續推動公眾健康知識共享與技術傳播。<br />
               <button class="read-more" onclick="showPage('news')" style="margin-top:14px;">瀏覽全部新聞 →</button>
             </p>
           </div>
@@ -1757,7 +2102,7 @@
           <div class="research-intro">
             <div>
               <div class="section-eyebrow">Approach</div>
-              <h2 class="section-title-h2">以六大支柱<br/>構建研究<em>體系</em></h2>
+              <h2 class="section-title-h2">以六大支柱<br />構建研究<em>體系</em></h2>
             </div>
             <p>
               中心研究體系以人口健康關鍵議題為導向，融合流行病學、生物統計、生物信息、健康數據科學與公共政策等多學科視角，
@@ -2000,7 +2345,7 @@
           <div class="section-head">
             <div>
               <div class="section-eyebrow">Advisory Team</div>
-              <h2 class="section-title-h2">匯聚跨學科力量<br/>支撐中心<em>研究與合作</em></h2>
+              <h2 class="section-title-h2">匯聚跨學科力量<br />支撐中心<em>研究與合作</em></h2>
             </div>
             <p class="section-desc">
               中心合作專家顧問團隊由公共衛生、生物統計、人工智能、基層衛生服務、康養旅遊、智慧旅遊與健康政策評價等領域學者組成，
@@ -2194,25 +2539,24 @@
               <div class="branch-tag">Headquarters</div>
               <h4>香港總部</h4>
               <div class="branch-en">Hong Kong</div>
-              <p>香港尖沙咀亞士厘道<br/>Tsim Sha Tsui, Kowloon</p>
+              <p>香港尖沙咀亞士厘道<br />Tsim Sha Tsui, Kowloon</p>
             </div>
             <div class="branch">
               <div class="branch-tag">Branch Office</div>
               <h4>廣州分中心</h4>
               <div class="branch-en">Guangzhou Branch</div>
-              <p>聯絡郵箱<br/>service@epidemiology.hk</p>
+              <p>聯絡郵箱<br />service@epidemiology.hk</p>
             </div>
             <div class="branch">
               <div class="branch-tag">Branch Office</div>
               <h4>澳門分中心</h4>
               <div class="branch-en">Macau Branch</div>
-              <p>聯絡郵箱<br/>service@epidemiology.hk</p>
+              <p>聯絡郵箱<br />service@epidemiology.hk</p>
             </div>
           </div>
         </div>
       </section>
     </section>
-
   </main>
 
   <footer class="site-footer">
@@ -2225,6 +2569,7 @@
             HKPHTRC 為香港特別行政區政府批准設立之獨立法人科研機構，致力以跨學科科學方法推動公眾健康技術創新與循證決策。
           </p>
         </div>
+
         <div class="footer-col">
           <h5>Navigation</h5>
           <ul>
@@ -2234,6 +2579,7 @@
             <li onclick="showPage('services')">服務與合作 / Services</li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h5>Engage</h5>
           <ul>
@@ -2243,6 +2589,7 @@
             <li>合作意向 / Partnership</li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h5>Locations</h5>
           <ul>
@@ -2252,6 +2599,7 @@
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
         <div>© 2025 Hong Kong Public Health Technology Research Center. All rights reserved.</div>
         <div class="footer-motto">— Greater Bay Harmony · Health Future Priority —</div>
@@ -2339,6 +2687,7 @@
 
       const target = document.getElementById('page-' + pageName);
       const btn = document.querySelector('.nav button[data-page="' + pageName + '"]');
+
       if (target) target.classList.add('active');
       if (btn) btn.classList.add('active');
 
@@ -2360,6 +2709,7 @@
     function renderHomeNews() {
       const grid = document.getElementById('homeNewsGrid');
       if (!grid) return;
+
       const feature = newsItems[0];
       const others = newsItems.slice(1, 6);
 
@@ -2378,23 +2728,25 @@
           ${others.slice(0, 3).map((n) => {
             const idx = newsItems.indexOf(n);
             return `
-            <div class="news-mini-item" onclick="goToNews(${idx})">
-              <div class="news-tag">${n.categoryEn}</div>
-              <h4>${n.title}</h4>
-              <div class="news-mini-date">${n.date}</div>
-            </div>
-          `}).join('')}
+              <div class="news-mini-item" onclick="goToNews(${idx})">
+                <div class="news-tag">${n.categoryEn}</div>
+                <h4>${n.title}</h4>
+                <div class="news-mini-date">${n.date}</div>
+              </div>
+            `;
+          }).join('')}
         </div>
         <div class="news-list-mini">
           ${others.slice(3).map((n) => {
             const idx = newsItems.indexOf(n);
             return `
-            <div class="news-mini-item" onclick="goToNews(${idx})">
-              <div class="news-tag">${n.categoryEn}</div>
-              <h4>${n.title}</h4>
-              <div class="news-mini-date">${n.date}</div>
-            </div>
-          `}).join('')}
+              <div class="news-mini-item" onclick="goToNews(${idx})">
+                <div class="news-tag">${n.categoryEn}</div>
+                <h4>${n.title}</h4>
+                <div class="news-mini-date">${n.date}</div>
+              </div>
+            `;
+          }).join('')}
         </div>
       `;
     }
@@ -2407,6 +2759,7 @@
 
     function renderNewsList() {
       const totalPages = Math.max(1, Math.ceil(newsItems.length / newsPerPage));
+
       if (currentNewsPage < 1) currentNewsPage = 1;
       if (currentNewsPage > totalPages) currentNewsPage = totalPages;
 
@@ -2415,17 +2768,21 @@
       const visible = newsItems.slice(start, end);
 
       const list = document.getElementById('newsList');
+      if (!list) return;
+
       list.innerHTML = '';
 
       visible.forEach((item, idx) => {
         const realIdx = start + idx;
         const div = document.createElement('div');
+
         div.className = 'news-article' + (realIdx === currentNewsIndex ? ' active' : '');
         div.onclick = () => {
           currentNewsIndex = realIdx;
           renderNewsList();
           renderNewsDetail(realIdx);
         };
+
         div.innerHTML = `
           <div class="news-article-meta">
             <span class="news-article-cat">${item.categoryEn} · ${item.category}</span>
@@ -2434,6 +2791,7 @@
           </div>
           <h3>${item.title}</h3>
         `;
+
         list.appendChild(div);
       });
 
@@ -2445,6 +2803,7 @@
     function renderNewsDetail(idx) {
       const item = newsItems[idx];
       if (!item) return;
+
       document.getElementById('newsDetailMeta').textContent = `${item.categoryEn} · ${item.category}  ·  ${item.date}`;
       document.getElementById('newsDetailTitle').textContent = item.title;
       document.getElementById('newsDetailContent').innerHTML = item.content.map(p => `<p>${p}</p>`).join('');
@@ -2453,9 +2812,12 @@
     function changeNewsPage(dir) {
       const totalPages = Math.ceil(newsItems.length / newsPerPage);
       const next = currentNewsPage + dir;
+
       if (next < 1 || next > totalPages) return;
+
       currentNewsPage = next;
       currentNewsIndex = (currentNewsPage - 1) * newsPerPage;
+
       renderNewsList();
       renderNewsDetail(currentNewsIndex);
     }
@@ -2463,9 +2825,11 @@
     window.addEventListener('DOMContentLoaded', () => {
       const valid = ['home', 'about', 'research', 'services', 'experts', 'news', 'contact'];
       const hash = location.hash.replace('#', '');
+
       renderHomeNews();
       renderNewsList();
       renderNewsDetail(0);
+
       showPage(valid.includes(hash) ? hash : 'home');
     });
   </script>
