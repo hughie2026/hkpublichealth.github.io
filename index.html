@@ -3,2812 +3,945 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>香港公眾健康技術研究中心 | Hong Kong Public Health Technology Research Center</title>
+  <title>香港公眾健康技術研究中心 | HKPHTRC</title>
   <meta name="description" content="香港公眾健康技術研究中心（HKPHTRC）— 致力推動粵港澳大灣區公共衛生科學研究、技術創新與循證決策。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #0a1f3d;
-      --ink-2: #15375f;
-      --ink-3: #1f4d7a;
-      --crimson: #8b1f2f;
-      --gold: #b08d4f;
-      --paper: #f7f5f0;
-      --bone: #efece4;
-      --line: #d6d2c8;
-      --line-soft: #e7e3d9;
-      --text: #1a1a1a;
-      --text-2: #3a3a3a;
-      --muted: #6b6b6b;
+      --black: #000000;
+      --near-black: #111111;
+      --dark: #1a1a1a;
+      --charcoal: #2c2c2c;
+      --gray-dark: #444444;
+      --gray: #666666;
+      --gray-mid: #888888;
+      --gray-light: #aaaaaa;
+      --gray-lighter: #cccccc;
+      --border: #e0e0e0;
+      --off-white: #f5f5f5;
+      --warm-white: #faf9f7;
       --white: #ffffff;
-      --max: 1280px;
-      --font-base: "Times New Roman", Times, "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Heiti TC", "Heiti SC", "黑体", SimHei, sans-serif;
+      --accent: #8B0000;
+      --accent-light: #a52a2a;
+      --gold: #c5a55a;
+      --serif-en: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+      --serif-cn: 'Noto Serif TC', '宋体', 'SimSun', serif;
+      --sans-en: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+      --sans-cn: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
+      --max-width: 1400px;
+      --content-width: 900px;
+      --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    em, i, cite, address, var, dfn { font-style: normal; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-base);
-      background: var(--paper);
-      color: var(--text);
-      line-height: 1.8;
+    html {
       font-size: 16px;
+      scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    a { color: inherit; text-decoration: none; }
+    body {
+      font-family: var(--sans-cn);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    em, i { font-style: normal; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
     img { max-width: 100%; display: block; }
-    button { font-family: inherit; }
 
-    .container {
-      width: min(calc(100% - 48px), var(--max));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      background: var(--ink);
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .topbar-inner {
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .topbar-left {
-      letter-spacing: 0.08em;
-      opacity: 0.85;
-    }
-
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .topbar-right span,
-    .topbar-right a {
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
       cursor: pointer;
+    }
+
+    /* ========== UTILITY BAR (Top) ========== */
+    .utility-bar {
+      background: var(--near-black);
+      color: var(--gray-lighter);
+      font-family: var(--sans-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 0;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .utility-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .utility-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .utility-links a {
+      color: var(--gray-light);
       transition: color 0.2s;
     }
 
-    .topbar-right a:hover { color: var(--gold); }
+    .utility-links a:hover { color: var(--white); }
 
-    .topbar-divider {
+    .utility-divider {
       width: 1px;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.25);
+      height: 10px;
+      background: var(--gray-dark);
     }
 
+    /* ========== HEADER ========== */
     .site-header {
       background: var(--white);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 900;
+      transition: box-shadow 0.3s ease;
     }
 
-    .header-top {
+    .site-header.scrolled {
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 0 18px;
-      gap: 24px;
+      height: 80px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 18px;
-      min-width: 0;
+      gap: 16px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--accent);
     }
 
     .brand-logo img {
-      height: 64px;
-      width: auto;
-      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .brand-text {
-      border-left: 1px solid var(--line);
-      padding-left: 18px;
-      line-height: 1.3;
-    }
-
-    .brand-cn {
+    .brand-logo-placeholder {
+      font-family: var(--serif-en);
+      font-size: 1.1rem;
       font-weight: 700;
-      font-size: 1.18rem;
-      color: var(--ink);
-      letter-spacing: 0.04em;
+      color: var(--accent);
     }
 
-    .brand-en {
-      font-size: 0.74rem;
-      letter-spacing: 0.14em;
+    .brand-text-cn {
+      font-family: var(--serif-cn);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--near-black);
+      letter-spacing: 0.06em;
+    }
+
+    .brand-text-en {
+      font-family: var(--sans-en);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
+      color: var(--gray);
+      margin-top: 2px;
     }
 
-    .header-meta {
-      text-align: right;
-      font-size: 0.78rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
+    /* Nav */
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
     }
 
-    .header-meta strong {
+    .main-nav button {
+      font-family: var(--sans-cn);
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--gray-dark);
+      padding: 28px 20px;
+      position: relative;
+      letter-spacing: 0.04em;
+      transition: color 0.3s ease;
+    }
+
+    .main-nav button::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s var(--transition);
+    }
+
+    .main-nav button:hover { color: var(--near-black); }
+    .main-nav button:hover::after,
+    .main-nav button.active::after { transform: scaleX(1); }
+    .main-nav button.active { color: var(--near-black); font-weight: 500; }
+
+    .nav-en-label {
       display: block;
-      color: var(--ink);
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      margin-bottom: 2px;
+      font-family: var(--sans-en);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray-light);
+      margin-top: 2px;
     }
 
     .menu-toggle {
       display: none;
-      border: 1px solid var(--line);
-      background: var(--white);
-      padding: 10px 14px;
-      cursor: pointer;
-      color: var(--ink);
-      font-size: 1rem;
-      letter-spacing: 0.1em;
-    }
-
-    .nav-wrap {
-      border-top: 1px solid var(--line-soft);
-    }
-
-    .nav {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .nav button {
-      border: 0;
-      background: transparent;
-      color: var(--ink);
-      font-size: 0.86rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      padding: 18px 17px;
-      cursor: pointer;
-      position: relative;
-      transition: color 0.2s;
-    }
-
-    .nav button::after {
-      content: "";
-      position: absolute;
-      left: 17px;
-      right: 17px;
-      bottom: 0;
-      height: 2px;
-      background: var(--crimson);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-
-    .nav button:hover { color: var(--crimson); }
-    .nav button.active { color: var(--crimson); }
-    .nav button.active::after { transform: scaleX(1); }
-
-    .nav button .nav-cn { display: block; }
-
-    .nav button .nav-en {
-      display: block;
-      font-weight: 400;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-top: 3px;
+      font-family: var(--sans-en);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
+      color: var(--dark);
+      padding: 10px;
     }
 
-    .nav button.active .nav-en {
-      color: var(--crimson);
-      opacity: 0.75;
-    }
-
-    .page-wrap { min-height: 60vh; }
-
-    .page {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .page.active { display: block; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    /* ========== HERO — Full bleed Rockefeller style ========== */
     .hero {
-      background: var(--ink);
-      color: var(--white);
       position: relative;
+      height: 92vh;
+      min-height: 600px;
+      max-height: 1000px;
+      display: flex;
+      align-items: flex-end;
       overflow: hidden;
-      border-bottom: 4px solid var(--crimson);
+      background: var(--near-black);
     }
 
-    .hero::before {
-      content: "";
+    .hero-bg {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 85% 20%, rgba(176, 141, 79, 0.18), transparent 45%),
-        radial-gradient(circle at 15% 90%, rgba(139, 31, 47, 0.22), transparent 50%);
-      pointer-events: none;
+        linear-gradient(135deg,
+          rgba(10,20,40,0.85) 0%,
+          rgba(20,40,60,0.7) 30%,
+          rgba(40,60,80,0.5) 60%,
+          rgba(60,80,100,0.4) 100%
+        ),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%23061428"/><stop offset="50%25" style="stop-color:%230d2847"/><stop offset="100%25" style="stop-color:%23183a5e"/></linearGradient></defs><rect fill="url(%23g)" width="1200" height="800"/><circle cx="900" cy="200" r="300" fill="rgba(255,255,255,0.02)"/><circle cx="200" cy="600" r="200" fill="rgba(255,255,255,0.015)"/></svg>');
+      background-size: cover;
+      background-position: center;
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
-      padding: 84px 0 96px;
+    .hero-content {
       position: relative;
+      z-index: 2;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      width: 100%;
     }
 
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
+      font-family: var(--sans-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 28px;
-      font-weight: 600;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .hero-eyebrow::before {
-      content: "";
-      width: 36px;
+      content: '';
+      width: 40px;
       height: 1px;
       background: var(--gold);
     }
 
     .hero h1 {
-      font-weight: 700;
-      font-size: clamp(2.2rem, 4.6vw, 3.6rem);
-      line-height: 1.25;
+      font-family: var(--serif-cn);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+      max-width: 750px;
+      margin-bottom: 28px;
       letter-spacing: 0.02em;
-      margin: 0 0 26px;
     }
 
     .hero h1 em {
+      font-family: var(--serif-en);
+      font-style: italic;
       color: var(--gold);
-      font-weight: 700;
     }
 
-    .hero-lead {
-      font-size: 1.05rem;
-      line-height: 1.95;
-      color: rgba(255, 255, 255, 0.82);
-      margin: 0 0 36px;
-      max-width: 60ch;
+    .hero-desc {
+      font-family: var(--sans-cn);
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.7);
+      max-width: 620px;
+      margin-bottom: 40px;
+      font-weight: 300;
     }
 
     .hero-actions {
       display: flex;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 14px;
     }
 
     .btn {
+      font-family: var(--sans-en);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      transition: all 0.35s var(--transition);
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 0.84rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      padding: 16px 28px;
-      transition: all 0.25s;
     }
 
     .btn-primary {
-      background: var(--crimson);
-      color: var(--white);
+      background: var(--white);
+      color: var(--near-black);
     }
 
     .btn-primary:hover {
-      background: #a52638;
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: transparent;
+      background: var(--gold);
       color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--gold);
-      color: var(--gold);
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.4);
+      color: var(--white);
     }
 
-    .btn .arrow { font-size: 1.1rem; }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(10px);
-      padding: 36px;
-      position: relative;
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
     }
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      width: 48px;
-      height: 48px;
-      border-top: 2px solid var(--gold);
-      border-left: 2px solid var(--gold);
+    .btn-dark {
+      background: var(--near-black);
+      color: var(--white);
     }
 
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      bottom: -1px;
-      right: -1px;
-      width: 48px;
-      height: 48px;
-      border-bottom: 2px solid var(--gold);
-      border-right: 2px solid var(--gold);
+    .btn-dark:hover {
+      background: var(--accent);
     }
 
-    .hero-card-label {
-      color: var(--gold);
-      font-size: 0.95rem;
-      margin-bottom: 6px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .hero-card-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      line-height: 1.4;
-      letter-spacing: 0.04em;
-    }
-
-    .hero-card-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .hero-card-list li {
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.92rem;
-    }
-
-    .hero-card-list li:last-child { border-bottom: none; }
-
-    .hero-card-list .label {
-      color: rgba(255, 255, 255, 0.7);
-      letter-spacing: 0.08em;
+    .btn-text {
+      color: var(--accent);
+      font-family: var(--sans-en);
       font-size: 0.78rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      padding: 8px 0;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
     }
 
-    .hero-card-list .value {
-      font-size: 1.05rem;
-      color: var(--white);
-      font-weight: 600;
+    .btn-text:hover {
+      border-bottom-color: var(--accent);
     }
 
-    .stats-strip {
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .hero-stats {
+      position: absolute;
+      right: 48px;
+      bottom: 80px;
+      display: flex;
       gap: 0;
+      z-index: 2;
     }
 
-    .stat {
-      padding: 44px 28px;
+    .hero-stat {
+      padding: 20px 36px;
+      border-left: 1px solid rgba(255,255,255,0.15);
       text-align: center;
-      border-right: 1px solid var(--line-soft);
     }
 
-    .stat:last-child { border-right: none; }
+    .hero-stat:first-child { border-left: none; }
 
-    .stat-num {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 12px;
+    .hero-stat-val {
+      font-family: var(--serif-en);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--white);
+      display: block;
+    }
+
+    .hero-stat-label {
+      font-family: var(--sans-en);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-lg { padding: 120px 0; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .container-narrow {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* Section headers — Rockefeller style */
+    .section-label {
+      font-family: var(--sans-en);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--serif-cn);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600;
+      color: var(--near-black);
+      line-height: 1.35;
+      margin-bottom: 20px;
       letter-spacing: 0.02em;
     }
 
-    .stat-num sup {
-      font-size: 1.2rem;
-      color: var(--crimson);
+    .section-title em {
+      font-family: var(--serif-en);
+      font-style: italic;
+      color: var(--accent);
     }
 
-    .stat-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 600;
+    .section-subtitle {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--gray);
+      max-width: 640px;
+      font-weight: 300;
     }
 
-    .section {
-      padding: 88px 0;
-      background: var(--paper);
-    }
-
-    .section-alt {
-      background: var(--white);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-dark {
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .section-head {
+    .section-header {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: end;
-      margin-bottom: 56px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--line);
+      margin-bottom: 64px;
     }
 
-    .section-eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      margin-bottom: 16px;
-      font-weight: 700;
+    .section-header-full {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 64px;
     }
 
-    .section-eyebrow::before {
-      content: "§ ";
+    .section-header-full .section-label {
+      justify-content: center;
     }
 
-    .section-title-h2 {
-      font-weight: 700;
-      font-size: clamp(1.8rem, 3.4vw, 2.5rem);
-      line-height: 1.35;
-      margin: 0;
-      color: var(--ink);
-      letter-spacing: 0.02em;
+    .section-header-full .section-label::before { display: none; }
+
+    .section-header-full .section-subtitle {
+      margin: 0 auto;
     }
 
-    .section-title-h2 em {
-      color: var(--crimson);
-      font-weight: 700;
-    }
-
-    .section-desc {
-      font-size: 1.02rem;
-      color: var(--text-2);
-      line-height: 1.95;
-      margin: 0;
-    }
-
-    .section-dark .section-title-h2 { color: var(--white); }
-    .section-dark .section-desc { color: rgba(255, 255, 255, 0.78); }
-    .section-dark .section-head { border-bottom-color: rgba(255, 255, 255, 0.18); }
-
-    .pillar-grid {
+    /* ========== PILLAR / RESEARCH CARDS — Grid ========== */
+    .pillars-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
+      gap: 1px;
+      background: var(--border);
     }
 
-    .pillar {
-      padding: 36px 32px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .pillar-card {
       background: var(--white);
-      transition: background 0.3s;
+      padding: 48px 40px;
       cursor: pointer;
+      transition: all 0.4s var(--transition);
+      position: relative;
     }
 
-    .pillar:hover { background: var(--bone); }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--transition);
+    }
+
+    .pillar-card:hover {
+      background: var(--warm-white);
+    }
+
+    .pillar-card:hover::before {
+      transform: scaleX(1);
+    }
 
     .pillar-num {
-      color: var(--crimson);
-      font-size: 0.84rem;
-      margin-bottom: 14px;
-      letter-spacing: 0.14em;
-      font-weight: 600;
+      font-family: var(--serif-en);
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--border);
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+
+    .pillar-card:hover .pillar-num { color: var(--accent); }
+
+    .pillar-en {
+      font-family: var(--sans-en);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-    }
-
-    .pillar h3 {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--ink);
-      margin: 0 0 12px;
-      line-height: 1.4;
-      letter-spacing: 0.02em;
-    }
-
-    .pillar p {
-      color: var(--text-2);
-      font-size: 0.95rem;
-      line-height: 1.85;
-      margin: 0;
-    }
-
-    .home-news-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 32px;
-    }
-
-    .news-feature {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .news-feature-img {
-      background: linear-gradient(135deg, var(--ink) 0%, var(--ink-3) 100%);
-      height: 240px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      letter-spacing: 0.16em;
-      overflow: hidden;
-      font-size: 0.92rem;
-      text-transform: uppercase;
-    }
-
-    .news-feature-img::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(176, 141, 79, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(176, 141, 79, 0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    .news-feature-body { padding: 28px; }
-
-    .news-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      font-weight: 700;
+      color: var(--gray-light);
       margin-bottom: 10px;
     }
 
-    .news-date {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-bottom: 14px;
-      letter-spacing: 0.06em;
-    }
-
-    .news-feature h3 {
-      font-weight: 700;
-      font-size: 1.3rem;
+    .pillar-card h3 {
+      font-family: var(--serif-cn);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--near-black);
+      margin-bottom: 12px;
       line-height: 1.5;
-      margin: 0 0 14px;
-      color: var(--ink);
-      letter-spacing: 0.02em;
     }
 
-    .news-feature p {
-      color: var(--text-2);
-      font-size: 0.95rem;
-      margin: 0 0 18px;
-      line-height: 1.85;
+    .pillar-card p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--gray);
+      font-weight: 300;
     }
 
-    .read-more {
-      color: var(--crimson);
-      font-size: 0.86rem;
-      cursor: pointer;
-      border: 0;
-      background: 0;
-      padding: 0;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+    /* ========== ABOUT / MISSION — Split layout ========== */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+
+    .split-image {
+      background:
+        linear-gradient(to right, rgba(10,20,40,0.7), rgba(10,20,40,0.3)),
+        linear-gradient(135deg, #0d2847, #183a5e);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+    }
+
+    .split-quote {
+      font-family: var(--serif-cn);
+      font-size: 1.6rem;
+      line-height: 1.6;
+      color: var(--white);
+      font-weight: 400;
+      position: relative;
+    }
+
+    .split-quote::before {
+      content: '"';
+      font-family: var(--serif-en);
+      font-size: 6rem;
+      color: var(--gold);
+      position: absolute;
+      top: -40px;
+      left: -10px;
+      line-height: 1;
+      opacity: 0.6;
+    }
+
+    .split-quote cite {
+      display: block;
+      margin-top: 24px;
+      font-family: var(--sans-en);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
+      color: var(--gold);
     }
 
-    .read-more:hover { text-decoration: underline; }
-
-    .news-list-mini {
+    .split-text {
+      padding: 80px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      background: var(--warm-white);
+    }
+
+    .split-text .section-label { margin-bottom: 20px; }
+
+    .split-text h2 {
+      font-family: var(--serif-cn);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--near-black);
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .split-text p {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--gray);
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .split-text p:last-of-type { margin-bottom: 32px; }
+
+    /* ========== NEWS — Rockefeller editorial style ========== */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
       gap: 0;
     }
 
-    .news-mini-item {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--line);
+    .news-card {
+      border: 1px solid var(--border);
+      margin: -1px 0 0 -1px;
+      padding: 40px;
       cursor: pointer;
+      transition: all 0.35s var(--transition);
+      display: flex;
+      flex-direction: column;
     }
 
-    .news-mini-item:first-child { padding-top: 0; }
-    .news-mini-item:last-child { border-bottom: none; }
-    .news-mini-item .news-tag { margin-bottom: 6px; font-size: 0.68rem; }
-
-    .news-mini-item h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.55;
-      margin: 0 0 8px;
-      color: var(--ink);
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
+    .news-card:hover {
+      background: var(--warm-white);
+      z-index: 1;
     }
 
-    .news-mini-item:hover h4 { color: var(--crimson); }
-
-    .news-mini-date {
-      color: var(--muted);
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-    }
-
-    .quote-block {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .quote-mark {
-      font-size: 8rem;
-      line-height: 0.7;
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    .quote-text {
-      font-size: clamp(1.25rem, 2.2vw, 1.65rem);
-      line-height: 1.75;
+    .news-card-featured {
+      grid-row: span 2;
+      background: var(--near-black);
       color: var(--white);
-      margin: 0 0 28px;
-      font-weight: 400;
-      letter-spacing: 0.03em;
+      padding: 48px;
     }
 
-    .quote-author {
-      font-size: 0.86rem;
-      letter-spacing: 0.16em;
+    .news-card-featured:hover {
+      background: var(--charcoal);
+    }
+
+    .news-date {
+      font-family: var(--sans-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
+      color: var(--gray-light);
+      margin-bottom: 8px;
     }
 
-    .quote-author span {
-      display: block;
-      color: rgba(255, 255, 255, 0.65);
-      letter-spacing: 0.06em;
-      text-transform: none;
-      font-size: 0.88rem;
-      margin-top: 6px;
-      font-weight: 400;
-    }
+    .news-card-featured .news-date { color: var(--gold); }
 
-    .page-banner {
-      background: var(--ink);
-      color: var(--white);
-      padding: 72px 0 60px;
-      border-bottom: 4px solid var(--crimson);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-banner::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40%;
-      height: 100%;
-      background:
-        repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(176, 141, 79, 0.05) 12px, rgba(176, 141, 79, 0.05) 13px);
-    }
-
-    .page-banner .container { position: relative; }
-
-    .breadcrumb {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
+    .news-category {
+      font-family: var(--sans-en);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 18px;
-      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 16px;
     }
 
-    .breadcrumb a { cursor: pointer; }
-    .breadcrumb a:hover { color: var(--gold); }
+    .news-card-featured .news-category { color: var(--gold); }
 
-    .page-banner h1 {
-      font-weight: 700;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.3;
-      margin: 0 0 12px;
-      letter-spacing: 0.04em;
-    }
-
-    .page-banner h1 em {
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    .page-banner-sub {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.7);
-      margin: 0;
-      letter-spacing: 0.06em;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .about-side {
-      position: sticky;
-      top: 180px;
-    }
-
-    .about-side h3 {
+    .news-card h3 {
+      font-family: var(--serif-cn);
       font-size: 1.05rem;
-      color: var(--crimson);
-      margin: 0 0 20px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+      font-weight: 600;
+      line-height: 1.55;
+      margin-bottom: 14px;
+      color: var(--near-black);
+    }
+
+    .news-card-featured h3 {
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+
+    .news-card p {
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: var(--gray);
+      flex: 1;
+      font-weight: 300;
+    }
+
+    .news-card-featured p { color: rgba(255,255,255,0.6); }
+
+    .news-read-more {
+      font-family: var(--sans-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .news-card-featured .news-read-more { color: var(--gold); }
+
+    /* ========== EXPERTS ========== */
+    .experts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .expert-card {
+      text-align: center;
+      padding: 40px 24px;
+      transition: all 0.35s ease;
+    }
+
+    .expert-card:hover {
+      background: var(--warm-white);
+    }
+
+    .expert-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e8e4dc, #d4cfc5);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif-cn);
+      font-size: 1.6rem;
+      color: var(--gray);
+      border: 3px solid var(--white);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .expert-card h4 {
+      font-family: var(--serif-cn);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--near-black);
+      margin-bottom: 6px;
+    }
+
+    .expert-role {
+      font-family: var(--sans-en);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .expert-desc {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--gray);
+      font-weight: 300;
+    }
+
+    /* ========== SERVICES ========== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+
+    .service-card {
+      padding: 56px 48px;
+      border: 1px solid var(--border);
+      margin: -1px 0 0 -1px;
+      transition: all 0.35s ease;
+      position: relative;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.5s var(--transition);
+    }
+
+    .service-card:hover::after { width: 100%; }
+    .service-card:hover { background: var(--warm-white); }
+
+    .service-num {
+      font-family: var(--serif-en);
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--border);
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .service-card:hover .service-num { color: var(--accent); }
+
+    .service-card h3 {
+      font-family: var(--serif-cn);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--near-black);
+      margin-bottom: 8px;
+    }
+
+    .service-en {
+      font-family: var(--sans-en);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 16px;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-card ul li {
+      font-size: 0.82rem;
+      color: var(--gray);
+      padding: 6px 0;
+      padding-left: 16px;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .service-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 13px;
+      width: 6px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* ========== ABOUT PAGE ========== */
+    .article-content {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 80px;
+    }
+
+    .article-sidebar {
+      position: sticky;
+      top: 120px;
+      align-self: start;
     }
 
     .toc {
       list-style: none;
       padding: 0;
-      margin: 0;
-      border-left: 1px solid var(--line);
     }
 
     .toc li {
-      padding: 10px 0 10px 18px;
-      font-size: 0.94rem;
-      color: var(--text-2);
-      border-left: 2px solid transparent;
-      margin-left: -1px;
-      cursor: pointer;
-      transition: all 0.2s;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--gray);
+      display: flex;
+      gap: 12px;
     }
 
-    .toc li:hover {
-      color: var(--crimson);
-      border-left-color: var(--crimson);
+    .toc .num {
+      font-family: var(--serif-en);
+      color: var(--accent);
+      font-weight: 500;
+      min-width: 24px;
     }
 
-    .toc li .num {
-      color: var(--muted);
-      margin-right: 10px;
-      font-weight: 700;
-    }
-
-    .article-block { margin-bottom: 56px; }
-    .article-block:last-child { margin-bottom: 0; }
-
-    .article-num {
-      color: var(--crimson);
-      font-size: 0.86rem;
-      margin-bottom: 10px;
-      letter-spacing: 0.18em;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .article-block h2 {
-      font-weight: 700;
-      font-size: 1.7rem;
-      color: var(--ink);
-      margin: 0 0 24px;
-      line-height: 1.4;
-      letter-spacing: 0.04em;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .article-block p {
-      font-size: 1.02rem;
-      line-height: 1.95;
-      color: var(--text-2);
-      margin: 0 0 18px;
-    }
-
-    .pull-quote {
-      border-left: 3px solid var(--crimson);
-      padding: 8px 0 8px 24px;
-      margin: 28px 0;
-      font-size: 1.15rem;
-      color: var(--ink);
-      line-height: 1.75;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 28px;
-      border-left: 1px solid var(--line);
-      margin-top: 28px;
-    }
-
-    .timeline-item {
-      padding-bottom: 28px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -34px;
-      top: 8px;
-      width: 11px;
-      height: 11px;
-      background: var(--crimson);
-      border-radius: 50%;
-      border: 2px solid var(--paper);
-      box-shadow: 0 0 0 1px var(--crimson);
-    }
-
-    .timeline-year {
-      color: var(--crimson);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
-    .timeline-text {
-      font-size: 0.98rem;
-      color: var(--text-2);
-      margin: 6px 0 0;
-      line-height: 1.85;
-    }
-
-    .gov-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    .gov-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: 24px;
-    }
-
-    .gov-card .gov-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .gov-card h4 {
-      font-size: 1.1rem;
-      color: var(--ink);
-      margin: 0 0 8px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .gov-card p {
-      font-size: 0.92rem;
-      color: var(--text-2);
-      margin: 0;
-      line-height: 1.85;
-    }
-
-    .research-intro {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+    .article-block {
       margin-bottom: 64px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid var(--line);
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .research-intro p {
-      font-size: 1.05rem;
-      line-height: 1.95;
-      color: var(--text-2);
-    }
+    .article-block:last-child { border-bottom: none; }
 
-    .research-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .research-row {
-      display: grid;
-      grid-template-columns: 80px 1fr 2.4fr;
-      gap: 40px;
-      padding: 36px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: start;
-      transition: background 0.3s, padding 0.3s;
-    }
-
-    .research-row:hover {
-      background: var(--bone);
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    .research-num {
-      font-size: 2rem;
-      color: var(--crimson);
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .research-row h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin: 0 0 8px;
-      line-height: 1.4;
-      letter-spacing: 0.02em;
-    }
-
-    .research-row .en-title {
-      font-size: 0.92rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
-    .research-row p {
-      font-size: 0.98rem;
-      color: var(--text-2);
-      line-height: 1.9;
-      margin: 0 0 14px;
-    }
-
-    .research-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .research-tag {
-      font-size: 0.74rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border: 1px solid var(--line);
-      color: var(--ink);
-      background: var(--white);
-      font-weight: 600;
-    }
-
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-
-    .method-item {
-      padding: 28px 24px;
-      background: var(--white);
-      border-top: 3px solid var(--crimson);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .method-item h4 {
-      font-size: 1.05rem;
-      color: var(--ink);
-      margin: 0 0 8px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .method-item p {
-      font-size: 0.92rem;
-      color: var(--text-2);
-      margin: 0;
-      line-height: 1.8;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
-    }
-
-    .service-item {
-      padding: 44px 36px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--white);
-      position: relative;
-    }
-
-    .service-item-num {
-      position: absolute;
-      top: 28px;
-      right: 32px;
-      font-size: 2.6rem;
-      color: var(--bone);
-      line-height: 1;
-      font-weight: 700;
-    }
-
-    .service-item h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin: 0 0 6px;
-      letter-spacing: 0.04em;
-    }
-
-    .service-item .service-en {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-      letter-spacing: 0.06em;
-    }
-
-    .service-item p {
-      color: var(--text-2);
-      font-size: 0.96rem;
-      line-height: 1.95;
-      margin: 0;
-    }
-
-    .service-item ul {
-      margin: 14px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .service-item ul li {
-      padding: 6px 0 6px 20px;
-      position: relative;
-      font-size: 0.94rem;
-      color: var(--text-2);
-      line-height: 1.85;
-    }
-
-    .service-item ul li::before {
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: var(--crimson);
-      font-weight: 700;
-    }
-
-    .partners-band {
-      margin-top: 56px;
-      padding: 36px 0;
-      background: var(--white);
-      border: 1px solid var(--line);
-      text-align: center;
-    }
-
-    .partners-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 22px;
-      font-weight: 600;
-    }
-
-    .partners-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 36px;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .partner-name {
-      font-size: 1rem;
-      color: var(--ink);
-      letter-spacing: 0.06em;
-      font-weight: 600;
-    }
-
-    .partner-divider {
-      width: 1px;
-      height: 16px;
-      background: var(--line);
-    }
-
-    .expert-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
-    }
-
-    .expert-card {
-      background: var(--white);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      transition: background 0.3s, transform 0.3s;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-    }
-
-    .expert-card:hover {
-      background: var(--bone);
-      transform: translateY(-2px);
-    }
-
-    .expert-photo {
-      width: 180px;
-      aspect-ratio: 3 / 4;
-      margin: 30px auto 0;
-      background: var(--paper);
-      border: 1px solid var(--line-soft);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .expert-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-top: 3px solid var(--crimson);
-      pointer-events: none;
-      opacity: 0.85;
-    }
-
-    .expert-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center center;
-      background: var(--paper);
-    }
-
-    .expert-body {
-      padding: 26px 28px 32px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .expert-index {
-      color: var(--crimson);
-      font-size: 0.78rem;
+    .article-label {
+      font-family: var(--sans-en);
+      font-size: 0.68rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .expert-name {
-      font-size: 1.32rem;
-      color: var(--ink);
-      margin: 0 0 8px;
-      line-height: 1.35;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-
-    .expert-role {
-      color: var(--muted);
-      font-size: 0.92rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 20px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--line-soft);
-    }
-
-    .expert-field-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .expert-fields {
-      color: var(--text-2);
-      font-size: 0.96rem;
-      line-height: 1.9;
-      margin: 0;
-    }
-
-    .expert-note {
-      margin-top: 48px;
-      padding: 28px 32px;
-      background: var(--white);
-      border-left: 3px solid var(--crimson);
-      border-top: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      color: var(--text-2);
-      line-height: 1.9;
-      font-size: 1rem;
-    }
-
-    .expert-note strong {
-      color: var(--ink);
-      letter-spacing: 0.04em;
-    }
-
-    .news-page-layout {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .news-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .news-article {
-      padding: 28px 0;
-      border-bottom: 1px solid var(--line);
-      cursor: pointer;
-      transition: padding 0.3s, background 0.3s;
-    }
-
-    .news-article:first-child { padding-top: 0; }
-    .news-article:hover { padding-left: 12px; }
-
-    .news-article.active {
-      background: var(--white);
-      padding: 28px 20px;
-      border-left: 3px solid var(--crimson);
-    }
-
-    .news-article-meta {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    .news-article-cat {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      font-weight: 700;
-    }
-
-    .news-article-meta-divider { color: var(--line); }
-
-    .news-article-date {
-      color: var(--muted);
-      font-size: 0.92rem;
-      letter-spacing: 0.06em;
-    }
-
-    .news-article h3 {
-      font-weight: 700;
-      font-size: 1.18rem;
-      line-height: 1.55;
-      margin: 0;
-      color: var(--ink);
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-
-    .news-article:hover h3,
-    .news-article.active h3 { color: var(--crimson); }
-
-    .pagination {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      justify-content: space-between;
-      margin-top: 36px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
-      flex-wrap: wrap;
-    }
-
-    .pagination button {
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink);
-      font-family: inherit;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: 12px 22px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .pagination button:hover:not(:disabled) {
-      background: var(--ink);
-      color: var(--white);
-      border-color: var(--ink);
-    }
-
-    .pagination button:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
-
-    .pagination-info {
-      color: var(--muted);
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-    }
-
-    .news-detail {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: 44px;
-      position: sticky;
-      top: 180px;
-    }
-
-    .news-detail-meta {
-      font-size: 0.76rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-
-    .news-detail h2 {
-      font-weight: 700;
-      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
-      line-height: 1.5;
-      margin: 0 0 20px;
-      color: var(--ink);
-      letter-spacing: 0.02em;
-    }
-
-    .news-detail-divider {
-      width: 60px;
-      height: 2px;
-      background: var(--crimson);
-      margin: 0 0 24px;
-    }
-
-    .news-detail p {
-      font-size: 1rem;
-      line-height: 1.95;
-      color: var(--text-2);
-      margin: 0 0 18px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 0;
-      border: 1px solid var(--line);
-      background: var(--white);
-    }
-
-    .contact-info {
-      padding: 48px 44px;
-      border-right: 1px solid var(--line);
-    }
-
-    .contact-info h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin: 0 0 6px;
-      letter-spacing: 0.04em;
-    }
-
-    .contact-info-en {
-      color: var(--muted);
-      margin-bottom: 28px;
-      font-size: 0.92rem;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--line);
-      letter-spacing: 0.06em;
-    }
-
-    .contact-row {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 16px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line-soft);
-      font-size: 0.96rem;
-    }
-
-    .contact-row:last-of-type { border-bottom: 0; }
-
-    .contact-row .label {
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: 4px;
-      font-weight: 600;
-    }
-
-    .contact-row .value {
-      color: var(--ink);
-      line-height: 1.7;
-    }
-
-    .contact-row .value .secondary {
-      color: var(--muted);
-      font-size: 0.88rem;
-      display: block;
-      margin-top: 2px;
-    }
-
-    .contact-row .value a {
-      color: var(--crimson);
-      border-bottom: 1px solid var(--crimson);
-    }
-
-    .contact-map {
-      min-height: 480px;
-      position: relative;
-    }
-
-    .contact-map iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .branches {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      margin-top: 48px;
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
-    }
-
-    .branch {
-      padding: 32px 28px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--white);
-    }
-
-    .branch-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--crimson);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .branch h4 {
-      font-size: 1.15rem;
-      color: var(--ink);
-      margin: 0 0 4px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .branch .branch-en {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-      letter-spacing: 0.06em;
-    }
-
-    .branch p {
-      font-size: 0.92rem;
-      color: var(--text-2);
-      margin: 0;
-      line-height: 1.8;
-    }
-
-    .site-footer {
-      background: var(--ink);
-      color: rgba(255, 255, 255, 0.78);
-      padding: 64px 0 0;
-      margin-top: 64px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .footer-brand-cn {
-      font-size: 1.2rem;
-      color: var(--white);
-      font-weight: 700;
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
-    }
-
-    .footer-brand-en {
-      color: var(--gold);
-      font-size: 0.92rem;
-      margin-bottom: 18px;
-      letter-spacing: 0.06em;
-    }
-
-    .footer-desc {
-      font-size: 0.92rem;
-      line-height: 1.95;
-      color: rgba(255, 255, 255, 0.65);
-      max-width: 36ch;
-    }
-
-    .footer-col h5 {
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin: 0 0 18px;
-      font-weight: 700;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-col ul li {
-      padding: 6px 0;
-      font-size: 0.92rem;
-      color: rgba(255, 255, 255, 0.7);
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    .footer-col ul li:hover { color: var(--gold); }
-
-    .footer-bottom {
-      padding: 24px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.5);
-      flex-wrap: wrap;
-    }
-
-    .footer-motto {
-      color: var(--gold);
-      letter-spacing: 0.12em;
-      font-weight: 600;
-    }
-
-    @media (max-width: 1100px) {
-      .hero-inner,
-      .news-page-layout,
-      .about-grid,
-      .quote-block,
-      .research-intro,
-      .home-news-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .stat:nth-child(2) { border-right: none; }
-
-      .stat:nth-child(1),
-      .stat:nth-child(2) {
-        border-bottom: 1px solid var(--line-soft);
-      }
-
-      .pillar-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .gov-grid,
-      .branches,
-      .expert-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .method-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-
-      .about-side { position: static; }
-
-      .news-detail { position: static; }
-
-      .contact-info {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .section-head {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .container { width: calc(100% - 32px); }
-
-      .menu-toggle { display: inline-flex; }
-
-      .header-meta { display: none; }
-
-      .nav-wrap { display: none; }
-
-      .nav-wrap.open { display: block; }
-
-      .nav { flex-direction: column; }
-
-      .nav button {
-        padding: 14px 0;
-        border-bottom: 1px solid var(--line-soft);
-        text-align: left;
-      }
-
-      .nav button::after { display: none; }
-
-      .brand-text { display: none; }
-
-      .section { padding: 56px 0; }
-
-      .pillar-grid,
-      .service-grid,
-      .gov-grid,
-      .branches,
-      .method-grid,
-      .expert-grid,
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stat {
-        border-right: none;
-        border-bottom: 1px solid var(--line-soft);
-      }
-
-      .research-row {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 28px 0;
-      }
-
-      .research-row:hover {
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .contact-info,
-      .news-detail {
-        padding: 28px;
-      }
-
-      .article-block h2 { font-size: 1.4rem; }
-
-      .topbar-left { display: none; }
-
-      .quote-mark { font-size: 5rem; }
-
-      .news-feature-img { height: 180px; }
-
-      .expert-photo {
-        width: 160px;
-        aspect-ratio: 3 / 4;
-        margin-top: 26px;
-      }
-
-      .expert-body {
-        padding: 24px 24px 28px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="topbar-left">Hong Kong Public Health Technology Research Center · Established 2025</div>
-      <div class="topbar-right">
-        <a>繁體</a>
-        <span class="topbar-divider"></span>
-        <a>English</a>
-        <span class="topbar-divider"></span>
-        <a href="mailto:service@epidemiology.hk">service@epidemiology.hk</a>
-      </div>
-    </div>
-  </div>
-
-  <header class="site-header">
-    <div class="container">
-      <div class="header-top">
-        <a class="brand" href="#" onclick="showPage('home'); return false;">
-          <div class="brand-logo">
-            <img src="logo.jpg" alt="HKPHTRC" />
-          </div>
-          <div class="brand-text">
-            <div class="brand-cn">香港公眾健康技術研究中心</div>
-            <div class="brand-en">Public Health Technology · Research Center</div>
-          </div>
-        </a>
-
-        <div class="header-meta">
-          <strong>HKPHTRC</strong>
-          總部 · 香港尖沙咀亞士厘道<br />
-          分中心 · 廣州 / 澳門
-        </div>
-
-        <button class="menu-toggle" onclick="toggleMenu()" aria-label="切換選單">≡ MENU</button>
-      </div>
-
-      <div class="nav-wrap" id="navWrap">
-        <nav class="nav container">
-          <button class="active" data-page="home" onclick="showPage('home')">
-            <span class="nav-cn">首頁</span>
-            <span class="nav-en">Home</span>
-          </button>
-          <button data-page="about" onclick="showPage('about')">
-            <span class="nav-cn">中心概覽</span>
-            <span class="nav-en">About</span>
-          </button>
-          <button data-page="research" onclick="showPage('research')">
-            <span class="nav-cn">研究領域</span>
-            <span class="nav-en">Research</span>
-          </button>
-          <button data-page="services" onclick="showPage('services')">
-            <span class="nav-cn">服務與合作</span>
-            <span class="nav-en">Services</span>
-          </button>
-          <button data-page="experts" onclick="showPage('experts')">
-            <span class="nav-cn">專家顧問</span>
-            <span class="nav-en">Experts</span>
-          </button>
-          <button data-page="news" onclick="showPage('news')">
-            <span class="nav-cn">新聞動態</span>
-            <span class="nav-en">News</span>
-          </button>
-          <button data-page="contact" onclick="showPage('contact')">
-            <span class="nav-cn">聯絡我們</span>
-            <span class="nav-en">Contact</span>
-          </button>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main class="page-wrap">
-    <section class="page active" id="page-home">
-      <div class="hero">
-        <div class="container hero-inner">
-          <div>
-            <div class="hero-eyebrow">SCIENCE FOR PUBLIC HEALTH · 灣區協同 健康先行</div>
-            <h1>以跨學科科學方法，<br />推進<em>公眾健康技術</em>之循證創新</h1>
-            <p class="hero-lead">
-              香港公眾健康技術研究中心（HKPHTRC）為香港特別行政區政府批准設立、
-              具獨立法人資格之第三方科研機構。中心匯聚粵港澳大灣區公共衛生領域學者，
-              於疾病早期篩查、智能健康監測、新型疾病防控、區域協同治理等方向開展系統性研究與成果轉化。
-            </p>
-            <div class="hero-actions">
-              <button class="btn btn-primary" onclick="showPage('research')">研究領域 <span class="arrow">→</span></button>
-              <button class="btn btn-ghost" onclick="showPage('experts')">專家顧問 <span class="arrow">→</span></button>
-            </div>
-          </div>
-
-          <aside class="hero-card">
-            <div class="hero-card-label">At a Glance</div>
-            <div class="hero-card-title">中心概要</div>
-            <ul class="hero-card-list">
-              <li><span class="label">Founded</span><span class="value">2025</span></li>
-              <li><span class="label">Headquarters</span><span class="value">Hong Kong</span></li>
-              <li><span class="label">Branches</span><span class="value">廣州 · 澳門</span></li>
-              <li><span class="label">Disciplines</span><span class="value">6 Pillars</span></li>
-              <li><span class="label">Status</span><span class="value">Independent · Non-profit</span></li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="section-eyebrow">Research Programmes</div>
-              <h2 class="section-title-h2">面向公共衛生實務的<br /><em>核心研究方向</em></h2>
-            </div>
-            <p class="section-desc">
-              中心聚焦六大研究支柱，圍繞早期識別、智能監測、防控策略、生物信息、數字健康干預與區域治理，
-              致力以嚴謹的科學方法回應人口健康挑戰，為決策提供循證依據。
-            </p>
-          </div>
-
-          <div class="pillar-grid">
-            <article class="pillar" onclick="showPage('research')">
-              <div class="pillar-num">— 01 / Early Detection</div>
-              <h3>疾病早期篩查技術</h3>
-              <p>結合新型檢測思路與數據分析方法，探索更高效、更精準的早期發現機制。</p>
-            </article>
-            <article class="pillar" onclick="showPage('research')">
-              <div class="pillar-num">— 02 / Smart Monitoring</div>
-              <h3>智能健康監測系統</h3>
-              <p>運用數據分析、智能模型與監測技術，支持人群健康管理與風險預警。</p>
-            </article>
-            <article class="pillar" onclick="showPage('research')">
-              <div class="pillar-num">— 03 / Disease Control</div>
-              <h3>新型疾病防控策略</h3>
-              <p>面向公共衛生實務需求，研究具前瞻性、可行性與實用性的防控方案。</p>
-            </article>
-            <article class="pillar" onclick="showPage('research')">
-              <div class="pillar-num">— 04 / Bioinformatics</div>
-              <h3>生物信息與健康數據</h3>
-              <p>整合多源健康數據與生物信息分析方法，提升人群健康研究與決策支持能力。</p>
-            </article>
-            <article class="pillar" onclick="showPage('research')">
-              <div class="pillar-num">— 05 / Digital Health</div>
-              <h3>數字健康干預技術</h3>
-              <p>探索移動健康、遠程管理及智慧平台在公眾健康服務中的應用模式與效果。</p>
-            </article>
-            <article class="pillar" onclick="showPage('research')">
-              <div class="pillar-num">— 06 / Regional Governance</div>
-              <h3>區域公共衛生協同治理</h3>
-              <p>圍繞灣區公共衛生協作需求，研究跨區域信息互通、資源協調與應急聯動機制。</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="section-eyebrow">Newsroom</div>
-              <h2 class="section-title-h2">最新<em>動態</em>與學術交流</h2>
-            </div>
-            <p class="section-desc">
-              中心透過學術會議、專題研討、合作對接與科普活動，持續推動公眾健康知識共享與技術傳播。<br />
-              <button class="read-more" onclick="showPage('news')" style="margin-top:14px;">瀏覽全部新聞 →</button>
-            </p>
-          </div>
-
-          <div class="home-news-grid" id="homeNewsGrid"></div>
-        </div>
-      </section>
-
-      <section class="section section-dark">
-        <div class="container">
-          <div class="quote-block">
-            <div class="quote-mark">"</div>
-            <div>
-              <p class="quote-text">
-                公眾健康的未來，繫於科學的嚴謹、技術的創新，與跨地域協同的智慧。
-                我們以此為使命，為大灣區人口健康貢獻可持續的科研力量。
-              </p>
-              <div class="quote-author">
-                中心學術委員會
-                <span>HKPHTRC Academic Committee</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="page-about">
-      <div class="page-banner">
-        <div class="container">
-          <div class="breadcrumb"><a onclick="showPage('home')">Home</a> &nbsp;/&nbsp; About</div>
-          <h1>中心<em>概覽</em></h1>
-          <p class="page-banner-sub">About the Center — Mission, Vision &amp; Governance</p>
-        </div>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div class="about-grid">
-            <aside class="about-side">
-              <h3>Contents</h3>
-              <ul class="toc">
-                <li><span class="num">I.</span>機構概述</li>
-                <li><span class="num">II.</span>使命與願景</li>
-                <li><span class="num">III.</span>學術定位</li>
-                <li><span class="num">IV.</span>發展時序</li>
-                <li><span class="num">V.</span>治理結構</li>
-              </ul>
-            </aside>
-
-            <div>
-              <article class="article-block">
-                <div class="article-num">I. Institutional Overview</div>
-                <h2>機構概述</h2>
-                <p>香港公眾健康技術研究中心（Hong Kong Public Health Technology Research Center, HKPHTRC）為經香港特別行政區政府批准設立、具獨立法人資格之第三方科研機構，於 2025 年正式成立，由粵港澳大灣區公共衛生領域多位學者聯合發起，總部設於香港尖沙咀亞士厘道，並於廣州、澳門設立分中心。</p>
-                <p>作為新成立的科研機構，中心積極匯聚大灣區跨學科專業人才，涵蓋醫學、生物學、流行病學、統計學與數據科學等領域，圍繞公眾健康技術研發、循證咨詢、學術交流與健康知識普及四項核心職能展開系統性工作。</p>
-                <div class="pull-quote">
-                  以服務公眾健康為核心，建設具有區域影響力的公眾健康技術研究與交流平台。
-                </div>
-              </article>
-
-              <article class="article-block">
-                <div class="article-num">II. Mission &amp; Vision</div>
-                <h2>使命與願景</h2>
-                <p>中心以「灣區協同，健康先行」為核心理念，致力推動前沿科技在公眾健康場景中的轉化應用，構建產學研一體化的創新生態。我們相信，嚴謹的科學方法、開放的協作精神，以及對社會責任的持守，是推動人口健康事業進步的根本。</p>
-                <p>願景：成為粵港澳大灣區乃至更廣範圍內具有專業權威、實務影響與學術聲譽的公眾健康技術研究機構。</p>
-              </article>
-
-              <article class="article-block">
-                <div class="article-num">III. Academic Positioning</div>
-                <h2>學術定位</h2>
-                <p>中心以「應用導向、循證驅動、跨域協同」為學術原則，重視研究的科學性、可行性與社會價值之統一。研究議題的選定，以公共衛生實務挑戰與灣區發展需求為基礎，並透過嚴謹的方法學設計，輸出具備可驗證性與可推廣性的研究成果。</p>
-                <p>同時，中心強調研究倫理、數據安全與利益相關方協作，於專業咨詢、培訓推廣與科普傳播等業務中堅守學術獨立與專業中立。</p>
-              </article>
-
-              <article class="article-block">
-                <div class="article-num">IV. Milestones</div>
-                <h2>發展時序</h2>
-                <div class="timeline">
-                  <div class="timeline-item">
-                    <div class="timeline-year">發展萌芽</div>
-                    <p class="timeline-text">中心於香港正式註冊成立，獲批獨立法人資格，落址尖沙咀亞士厘道。</p>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="timeline-year">發展初期</div>
-                    <p class="timeline-text">啟動跨學科團隊組建工作，發布年度研究方向建議框架。</p>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="timeline-year">持續成長</div>
-                    <p class="timeline-text">舉辦首場公眾健康技術交流座談會，啟動健康科普與培訓籌備工作。</p>
-                  </div>
-                  <div class="timeline-item">
-                    <div class="timeline-year">廣泛合作</div>
-                    <p class="timeline-text">完成廣州、澳門分中心設立，發布年度工作進展報告。</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="article-block">
-                <div class="article-num">V. Governance</div>
-                <h2>治理結構</h2>
-                <p>中心採用學術委員會、行政管理層與外部顧問三層治理結構，確保研究獨立性與運作規範性。</p>
-                <div class="gov-grid">
-                  <div class="gov-card">
-                    <div class="gov-tag">Academic Committee</div>
-                    <h4>學術委員會</h4>
-                    <p>由灣區公共衛生與相關學科資深學者組成，負責研究方向審議與學術質量把關。</p>
-                  </div>
-                  <div class="gov-card">
-                    <div class="gov-tag">Executive Office</div>
-                    <h4>行政管理層</h4>
-                    <p>負責中心日常運作、項目管理、財務合規與對外協作事務。</p>
-                  </div>
-                  <div class="gov-card">
-                    <div class="gov-tag">Advisory Board</div>
-                    <h4>外部顧問</h4>
-                    <p>涵蓋政府、產業、學術與社會領域代表，為中心發展戰略提供建議。</p>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="page-research">
-      <div class="page-banner">
-        <div class="container">
-          <div class="breadcrumb"><a onclick="showPage('home')">Home</a> &nbsp;/&nbsp; Research</div>
-          <h1>研究<em>領域</em></h1>
-          <p class="page-banner-sub">Research Programmes — Six Pillars of Public Health Technology</p>
-        </div>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div class="research-intro">
-            <div>
-              <div class="section-eyebrow">Approach</div>
-              <h2 class="section-title-h2">以六大支柱<br />構建研究<em>體系</em></h2>
-            </div>
-            <p>
-              中心研究體系以人口健康關鍵議題為導向，融合流行病學、生物統計、生物信息、健康數據科學與公共政策等多學科視角，
-              形成由「早期識別 — 過程監測 — 應對策略 — 數據基礎 — 干預技術 — 治理協同」構成的完整研究鏈條，
-              確保研究問題、方法工具與應用場景之間的有機銜接。
-            </p>
-          </div>
-
-          <div class="research-list">
-            <article class="research-row">
-              <div class="research-num">01</div>
-              <div>
-                <h3>疾病早期篩查技術</h3>
-                <div class="en-title">Early Disease Screening Technologies</div>
-              </div>
-              <div>
-                <p>圍繞慢性病、傳染病及高風險人群健康監測需求，結合新型檢測思路、生物標誌物研究與數據驅動的識別模型，探索更高效、更精準的早期發現機制，提升疾病可干預窗口的識別能力。</p>
-                <div class="research-tags">
-                  <span class="research-tag">Biomarker</span>
-                  <span class="research-tag">Risk Stratification</span>
-                  <span class="research-tag">Screening Pathway</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="research-row">
-              <div class="research-num">02</div>
-              <div>
-                <h3>智能健康監測系統</h3>
-                <div class="en-title">Intelligent Health Monitoring Systems</div>
-              </div>
-              <div>
-                <p>運用機器學習、感測技術與多源數據整合方法，研究個體與人群層面的健康狀態追蹤、風險識別與預警響應機制，支持公共衛生機構與醫療系統實現精細化健康管理。</p>
-                <div class="research-tags">
-                  <span class="research-tag">Machine Learning</span>
-                  <span class="research-tag">Sensing</span>
-                  <span class="research-tag">Risk Prediction</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="research-row">
-              <div class="research-num">03</div>
-              <div>
-                <h3>新型疾病防控策略</h3>
-                <div class="en-title">Emerging Disease Control Strategies</div>
-              </div>
-              <div>
-                <p>面向新發、再發及具公共衛生意義的疾病威脅，研究具前瞻性、可行性與實務價值的防控方案，涵蓋人群干預、環境控制、應急響應與政策工具評估。</p>
-                <div class="research-tags">
-                  <span class="research-tag">Outbreak Response</span>
-                  <span class="research-tag">Policy Evaluation</span>
-                  <span class="research-tag">Intervention Design</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="research-row">
-              <div class="research-num">04</div>
-              <div>
-                <h3>生物信息與健康數據</h3>
-                <div class="en-title">Bioinformatics &amp; Health Data Research</div>
-              </div>
-              <div>
-                <p>整合電子健康記錄、組學數據、人群隊列資料與環境健康數據等多源信息，發展可重現的分析方法與決策支持工具，提升人口健康研究與政策制定的循證質量。</p>
-                <div class="research-tags">
-                  <span class="research-tag">Omics</span>
-                  <span class="research-tag">EHR Analytics</span>
-                  <span class="research-tag">Cohort Studies</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="research-row">
-              <div class="research-num">05</div>
-              <div>
-                <h3>數字健康干預技術</h3>
-                <div class="en-title">Digital Health Interventions</div>
-              </div>
-              <div>
-                <p>探索移動健康、遠程管理、智慧醫療平台及行為干預技術在公眾健康服務中的設計、實施與成效評估，推動健康干預從醫療機構延伸至社區與居家場景。</p>
-                <div class="research-tags">
-                  <span class="research-tag">mHealth</span>
-                  <span class="research-tag">Telehealth</span>
-                  <span class="research-tag">Behavioral Science</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="research-row">
-              <div class="research-num">06</div>
-              <div>
-                <h3>區域公共衛生協同治理</h3>
-                <div class="en-title">Regional Public Health Governance</div>
-              </div>
-              <div>
-                <p>立足粵港澳大灣區公共衛生協作場景，研究跨區域信息互通、資源協調、應急聯動及制度銜接機制，為區域公共衛生治理現代化提供研究支持與實務建議。</p>
-                <div class="research-tags">
-                  <span class="research-tag">Cross-border Health</span>
-                  <span class="research-tag">Surveillance Networks</span>
-                  <span class="research-tag">Health Systems</span>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="section-head" style="margin-top: 80px;">
-            <div>
-              <div class="section-eyebrow">Methodology</div>
-              <h2 class="section-title-h2">研究<em>方法學</em></h2>
-            </div>
-            <p class="section-desc">
-              中心強調方法學嚴謹性與研究透明度，採用系統綜述、隊列研究、實驗設計、數據建模與政策評估等多元方法，
-              並重視研究倫理、數據治理與成果可重現性。
-            </p>
-          </div>
-
-          <div class="method-grid">
-            <div class="method-item">
-              <h4>Epidemiological Studies</h4>
-              <p>流行病學研究設計與實證分析。</p>
-            </div>
-            <div class="method-item">
-              <h4>Biostatistics</h4>
-              <p>生物統計建模與因果推斷方法。</p>
-            </div>
-            <div class="method-item">
-              <h4>Data Science</h4>
-              <p>多源健康數據整合與機器學習應用。</p>
-            </div>
-            <div class="method-item">
-              <h4>Implementation Science</h4>
-              <p>實施科學與政策評估方法。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="page-services">
-      <div class="page-banner">
-        <div class="container">
-          <div class="breadcrumb"><a onclick="showPage('home')">Home</a> &nbsp;/&nbsp; Services</div>
-          <h1>服務與<em>合作</em></h1>
-          <p class="page-banner-sub">Services &amp; Collaboration — Translating Science into Public Value</p>
-        </div>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="section-eyebrow">What We Offer</div>
-              <h2 class="section-title-h2">將科研成果<em>轉化</em>為社會價值</h2>
-            </div>
-            <p class="section-desc">
-              中心以四項核心服務銜接科研與社會應用，為政府、醫療機構、科研單位、產業及公眾提供專業、循證、可信的支持與協作。
-            </p>
-          </div>
-
-          <div class="service-grid">
-            <article class="service-item">
-              <div class="service-item-num">01</div>
-              <h3>專業咨詢服務</h3>
-              <div class="service-en">Professional Advisory</div>
-              <p>依託跨學科團隊，為政府部門、醫療機構與企業提供循證決策支持與專業建議，涵蓋公共衛生策略、健康技術評估、組織管理與風險應對等議題。</p>
-              <ul>
-                <li>公共衛生政策與專題研究</li>
-                <li>健康技術評估與場景論證</li>
-                <li>機構級健康管理咨詢</li>
-              </ul>
-            </article>
-
-            <article class="service-item">
-              <div class="service-item-num">02</div>
-              <h3>成果推廣與合作</h3>
-              <div class="service-en">Translation &amp; Partnership</div>
-              <p>中心積極與高校、科研機構及科技企業構建合作關係，推動科研成果轉化與落地應用，並透過學術會議、專題研討與聯合項目促進知識共享與技術交流。</p>
-              <ul>
-                <li>產學研聯合研究計劃</li>
-                <li>學術會議與專題研討</li>
-                <li>合作項目共建與資源對接</li>
-              </ul>
-            </article>
-
-            <article class="service-item">
-              <div class="service-item-num">03</div>
-              <h3>專業培訓</h3>
-              <div class="service-en">Professional Training</div>
-              <p>面向公共衛生從業者、醫療專業人員及相關研究人員，設計系統化培訓課程，提升公共衛生實務、健康科技應用、數據分析與循證決策等綜合能力。</p>
-              <ul>
-                <li>公共衛生實務工作坊</li>
-                <li>健康數據分析訓練營</li>
-                <li>定制化機構內訓服務</li>
-              </ul>
-            </article>
-
-            <article class="service-item">
-              <div class="service-item-num">04</div>
-              <h3>健康科普活動</h3>
-              <div class="service-en">Public Engagement</div>
-              <p>面向社會公眾推廣健康知識與防病理念，提升公眾健康素養與健康自主管理能力，強化社會層面的健康意識與科學素養。</p>
-              <ul>
-                <li>公眾健康講座與科普日</li>
-                <li>主題科普內容創作</li>
-                <li>社區健康倡導活動</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="partners-band">
-            <div class="partners-label">Open to Collaboration · 誠邀合作</div>
-            <div class="partners-list">
-              <span class="partner-name">高校與科研機構</span>
-              <span class="partner-divider"></span>
-              <span class="partner-name">政府與公共部門</span>
-              <span class="partner-divider"></span>
-              <span class="partner-name">醫療衛生機構</span>
-              <span class="partner-divider"></span>
-              <span class="partner-name">科技企業</span>
-              <span class="partner-divider"></span>
-              <span class="partner-name">非營利組織</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="page-experts">
-      <div class="page-banner">
-        <div class="container">
-          <div class="breadcrumb"><a onclick="showPage('home')">Home</a> &nbsp;/&nbsp; Experts</div>
-          <h1>中心合作<em>專家顧問團隊</em></h1>
-          <p class="page-banner-sub">Expert Advisory Team — Cross-disciplinary Scholars &amp; Research Advisors</p>
-        </div>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="section-eyebrow">Advisory Team</div>
-              <h2 class="section-title-h2">匯聚跨學科力量<br />支撐中心<em>研究與合作</em></h2>
-            </div>
-            <p class="section-desc">
-              中心合作專家顧問團隊由公共衛生、生物統計、人工智能、基層衛生服務、康養旅遊、智慧旅遊與健康政策評價等領域學者組成，
-              為中心研究布局、合作項目、循證咨詢與成果轉化提供專業支持。
-            </p>
-          </div>
-
-          <div class="expert-grid">
-            <article class="expert-card">
-              <div class="expert-photo">
-                <img src="tao-xiaoyu.jpg" alt="陶晓宇 博士" />
-              </div>
-              <div class="expert-body">
-                <div class="expert-index">Advisor 01</div>
-                <h3 class="expert-name">陶晓宇 博士</h3>
-                <div class="expert-role">研究員、博士生導師</div>
-                <div class="expert-field-label">Research Fields</div>
-                <p class="expert-fields">生物統計、人工智能與公共衛生、健康流行病學。</p>
-              </div>
-            </article>
-
-            <article class="expert-card">
-              <div class="expert-photo">
-                <img src="aisha-rahman.jpg" alt="Aisha Rahman 博士" />
-              </div>
-              <div class="expert-body">
-                <div class="expert-index">Advisor 02</div>
-                <h3 class="expert-name">Aisha Rahman 博士</h3>
-                <div class="expert-role">研究員、博士生導師</div>
-                <div class="expert-field-label">Research Fields</div>
-                <p class="expert-fields">人工智能與公共衛生、機器學習風險預測、健康數據公平性。</p>
-              </div>
-            </article>
-
-            <article class="expert-card">
-              <div class="expert-photo">
-                <img src="zhou-ning.jpg" alt="周宁 博士" />
-              </div>
-              <div class="expert-body">
-                <div class="expert-index">Advisor 03</div>
-                <h3 class="expert-name">周宁 博士</h3>
-                <div class="expert-role">研究員、博士生導師</div>
-                <div class="expert-field-label">Research Fields</div>
-                <p class="expert-fields">基層衛生服務實施、社區慢病管理、家庭醫生服務模式評估。</p>
-              </div>
-            </article>
-
-            <article class="expert-card">
-              <div class="expert-photo">
-                <img src="guan-jieqi.jpg" alt="管洁琦 博士" />
-              </div>
-              <div class="expert-body">
-                <div class="expert-index">Advisor 04</div>
-                <h3 class="expert-name">管洁琦 博士</h3>
-                <div class="expert-role">研究員、博士生導師</div>
-                <div class="expert-field-label">Research Fields</div>
-                <p class="expert-fields">企業社會責任 / 可持續發展、酒店與旅遊教育、康養酒店與旅遊。</p>
-              </div>
-            </article>
-
-            <article class="expert-card">
-              <div class="expert-photo">
-                <img src="james-oconnor.jpg" alt="James O'Connor 博士" />
-              </div>
-              <div class="expert-body">
-                <div class="expert-index">Advisor 05</div>
-                <h3 class="expert-name">James O'Connor 博士</h3>
-                <div class="expert-role">研究員、博士生導師</div>
-                <div class="expert-field-label">Research Fields</div>
-                <p class="expert-fields">運動流行病學、心血管健康促進、身體活動真實世界干預。</p>
-              </div>
-            </article>
-
-            <article class="expert-card">
-              <div class="expert-photo">
-                <img src="wang-liang.jpg" alt="王亮 博士" />
-              </div>
-              <div class="expert-body">
-                <div class="expert-index">Advisor 06</div>
-                <h3 class="expert-name">王亮 博士</h3>
-                <div class="expert-role">研究員、博士生導師</div>
-                <div class="expert-field-label">Research Fields</div>
-                <p class="expert-fields">智慧旅遊與大數據分析、酒店數字化轉型與信息系統。</p>
-              </div>
-            </article>
-
-            <article class="expert-card">
-              <div class="expert-photo">
-                <img src="zheng-haoran.jpg" alt="郑浩然 博士" />
-              </div>
-              <div class="expert-body">
-                <div class="expert-index">Advisor 07</div>
-                <h3 class="expert-name">郑浩然 博士</h3>
-                <div class="expert-role">研究員</div>
-                <div class="expert-field-label">Research Fields</div>
-                <p class="expert-fields">公共衛生政策真實世界評價、健康公平、社會決定因素研究。</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="expert-note">
-            <strong>合作方向：</strong>
-            專家顧問團隊將圍繞中心重大研究議題、跨學科項目設計、公共衛生技術評估、健康數據治理與區域合作機制等方向提供學術建議與專業支持。
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="page-news">
-      <div class="page-banner">
-        <div class="container">
-          <div class="breadcrumb"><a onclick="showPage('home')">Home</a> &nbsp;/&nbsp; News</div>
-          <h1>新聞<em>動態</em></h1>
-          <p class="page-banner-sub">Newsroom — Updates from the Center</p>
-        </div>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div class="news-page-layout">
-            <div>
-              <div class="news-list" id="newsList"></div>
-              <div class="pagination">
-                <button id="prevPageBtn" onclick="changeNewsPage(-1)">← Previous</button>
-                <span class="pagination-info" id="paginationInfo">Page 1 of 1</span>
-                <button id="nextPageBtn" onclick="changeNewsPage(1)">Next →</button>
-              </div>
-            </div>
-
-            <article class="news-detail" id="newsDetail">
-              <div class="news-detail-meta" id="newsDetailMeta"></div>
-              <h2 id="newsDetailTitle"></h2>
-              <div class="news-detail-divider"></div>
-              <div id="newsDetailContent"></div>
-            </article>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="page-contact">
-      <div class="page-banner">
-        <div class="container">
-          <div class="breadcrumb"><a onclick="showPage('home')">Home</a> &nbsp;/&nbsp; Contact</div>
-          <h1>聯絡<em>我們</em></h1>
-          <p class="page-banner-sub">Contact — Partnership, Consultation &amp; General Enquiries</p>
-        </div>
-      </div>
-
-      <section class="section">
-        <div class="container">
-          <div class="contact-grid">
-            <div class="contact-info">
-              <h2>香港總部</h2>
-              <div class="contact-info-en">Hong Kong Headquarters</div>
-
-              <div class="contact-row">
-                <div class="label">Institution</div>
-                <div class="value">香港公眾健康技術研究中心<span class="secondary">Hong Kong Public Health Technology Research Center</span></div>
-              </div>
-              <div class="contact-row">
-                <div class="label">Address</div>
-                <div class="value">香港尖沙咀亞士厘道</div>
-              </div>
-              <div class="contact-row">
-                <div class="label">Email</div>
-                <div class="value"><a href="mailto:service@epidemiology.hk">service@epidemiology.hk</a></div>
-              </div>
-              <div class="contact-row">
-                <div class="label">Motto</div>
-                <div class="value">灣區協同，健康先行</div>
-              </div>
-              <div class="contact-row">
-                <div class="label">Hours</div>
-                <div class="value">Mon – Fri · 09:00 – 18:00 (HKT)</div>
-              </div>
-            </div>
-
-            <div class="contact-map">
-              <iframe
-                title="香港尖沙咀亞士厘道地圖"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=114.1670%2C22.2940%2C114.1765%2C22.3025&layer=mapnik&marker=22.2982%2C114.1721"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
-          </div>
-
-          <div class="branches">
-            <div class="branch">
-              <div class="branch-tag">Headquarters</div>
-              <h4>香港總部</h4>
-              <div class="branch-en">Hong Kong</div>
-              <p>香港尖沙咀亞士厘道<br />Tsim Sha Tsui, Kowloon</p>
-            </div>
-            <div class="branch">
-              <div class="branch-tag">Branch Office</div>
-              <h4>廣州分中心</h4>
-              <div class="branch-en">Guangzhou Branch</div>
-              <p>聯絡郵箱<br />service@epidemiology.hk</p>
-            </div>
-            <div class="branch">
-              <div class="branch-tag">Branch Office</div>
-              <h4>澳門分中心</h4>
-              <div class="branch-en">Macau Branch</div>
-              <p>聯絡郵箱<br />service@epidemiology.hk</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand-cn">香港公眾健康技術研究中心</div>
-          <div class="footer-brand-en">Hong Kong Public Health Technology Research Center</div>
-          <p class="footer-desc">
-            HKPHTRC 為香港特別行政區政府批准設立之獨立法人科研機構，致力以跨學科科學方法推動公眾健康技術創新與循證決策。
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Navigation</h5>
-          <ul>
-            <li onclick="showPage('home')">首頁 / Home</li>
-            <li onclick="showPage('about')">中心概覽 / About</li>
-            <li onclick="showPage('research')">研究領域 / Research</li>
-            <li onclick="showPage('services')">服務與合作 / Services</li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Engage</h5>
-          <ul>
-            <li onclick="showPage('experts')">專家顧問 / Experts</li>
-            <li onclick="showPage('news')">新聞動態 / News</li>
-            <li onclick="showPage('contact')">聯絡我們 / Contact</li>
-            <li>合作意向 / Partnership</li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Locations</h5>
-          <ul>
-            <li>香港 · Hong Kong (HQ)</li>
-            <li>廣州 · Guangzhou</li>
-            <li>澳門 · Macau</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>© 2025 Hong Kong Public Health Technology Research Center. All rights reserved.</div>
-        <div class="footer-motto">— Greater Bay Harmony · Health Future Priority —</div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const newsItems = [
-      {
-        date: '2025-11-18',
-        category: '中心動態',
-        categoryEn: 'Institutional',
-        title: '中心發布年度工作進展，持續推進灣區公共衛生科研協作',
-        summary: '中心發布年度工作進展摘要，系統梳理科研規劃、團隊建設、學術交流與合作對接等方面的重點工作。',
-        content: [
-          '香港公眾健康技術研究中心近日發布年度工作進展摘要，系統梳理了中心自成立以來在科研規劃、團隊建設、學術交流與合作對接等方面的重點工作。中心表示，將繼續以服務公眾健康為核心，圍繞疾病早期篩查、智能健康監測、新型疾病防控策略等方向深化研究布局，並積極推動研究成果轉化與跨區域協作機制建設。',
-          '根據年度工作安排，中心目前正進一步完善跨學科人才體系，推進與高校、科研機構及科技企業的合作洽談，力求形成更具實效性的產學研協同模式。中心同時指出，未來將在促進灣區公共衛生資源共享、技術交流與專業服務方面持續發揮平台作用，為區域乃至更大範圍內的公眾健康事業發展提供支持。'
-        ]
-      },
-      {
-        date: '2025-10-06',
-        category: '學術交流',
-        categoryEn: 'Academic',
-        title: '中心舉辦公眾健康技術專題交流活動，聚焦智能監測與數據應用',
-        summary: '專題交流活動圍繞智能健康監測系統、人群健康風險識別、公共衛生數據應用與科研合作機制等議題展開深入交流。',
-        content: [
-          '為加強學術互動與專業對話，香港公眾健康技術研究中心近日舉辦公眾健康技術專題交流活動，邀請來自公共衛生、醫療科技、統計分析及數據研究等領域的專業人士參與。活動圍繞智能健康監測系統、人群健康風險識別、公共衛生數據應用與科研合作機制等議題展開深入交流。',
-          '與會人員就健康數據整合、風險預警模型應用、技術研發場景以及成果落地路徑交換意見，並就未來在技術共研、專業培訓、學術講座等方面的合作方向進行探討。中心表示，將繼續以系列交流活動作為推動知識共享的重要載體，進一步匯聚灣區科研力量，提升公眾健康技術創新和交流合作水平。'
-        ]
-      },
-      {
-        date: '2025-08-15',
-        category: '研究布局',
-        categoryEn: 'Research',
-        title: '中心發布年度研究方向建議框架，聚焦早期篩查、監測預警與協同治理',
-        summary: '研究方向建議框架從六個方向提出研究重點，旨在為中心未來科研規劃、合作拓展與項目落地提供參考。',
-        content: [
-          '結合粵港澳大灣區公共衛生發展需求與健康科技應用趨勢，香港公眾健康技術研究中心近日形成並發布年度研究方向建議框架。該框架從疾病早期篩查技術、智能健康監測系統、新型疾病防控策略、生物信息與健康數據研究、數字健康干預技術以及區域公共衛生協同治理等多個方向提出研究重點，旨在為中心未來科研規劃、合作拓展與項目落地提供參考。',
-          '中心表示，研究方向建議框架的形成，既是對當前公共衛生需求的回應，也是對未來技術應用與治理場景的前瞻布局。下一步，中心將在此基礎上進一步推進專題研究設計，並探索與有關合作單位開展更加緊密的聯動工作。'
-        ]
-      },
-      {
-        date: '2025-07-02',
-        category: '科普推廣',
-        categoryEn: 'Outreach',
-        title: '中心啟動健康科普與專業培訓籌備工作，推動知識傳播與能力建設',
-        summary: '相關活動將面向不同群體設計內容，包括公眾健康基礎知識普及、健康科技應用介紹及數據分析方法交流等。',
-        content: [
-          '為進一步推廣公眾健康知識、提升專業人員與社會公眾的健康素養，香港公眾健康技術研究中心近日啟動健康科普與專業培訓系列活動籌備工作。據介紹，相關活動將面向不同群體設計內容，包括公眾健康基礎知識普及、健康科技應用介紹、公共衛生應對能力提升以及數據分析方法交流等。',
-          '中心指出，公眾健康事業的推進不僅需要科研創新，也需要知識普及與能力建設同步發展，因此未來將持續通過講座、研討會、專題培訓等方式，促進科研成果與健康理念在更廣範圍內傳播，推動形成良好的社會健康氛圍。'
-        ]
-      },
-      {
-        date: '2025-05-20',
-        category: '合作發展',
-        categoryEn: 'Partnership',
-        title: '中心持續推進與高校及科研機構合作對接，探索多層次協同創新模式',
-        summary: '中心圍繞研究合作、人才交流、技術轉化、專業咨詢與公共衛生服務等方向進行廣泛交流。',
-        content: [
-          '香港公眾健康技術研究中心近期持續推進與高校、科研機構及科技企業的合作對接工作，圍繞研究合作、人才交流、技術轉化、專業咨詢與公共衛生服務等方向進行廣泛交流。中心表示，作為新成立的科研機構，建立多層次、跨領域的合作網絡是提升科研能力與成果應用水平的重要基礎。',
-          '通過與不同合作主體的交流對接，中心正逐步完善產學研一體化的創新生態構想，期望在研究項目共建、技術資源互通與專業服務協同等方面形成更加穩固的合作機制，進一步提升中心在區域公眾健康發展中的支撐能力。'
-        ]
-      },
-      {
-        date: '2025-04-08',
-        category: '中心活動',
-        categoryEn: 'Events',
-        title: '中心舉辦首場公眾健康技術交流座談會，促進跨學科對話與合作',
-        summary: '座談會聚焦疾病防控需求、智能技術應用、科研協作模式以及成果轉化路徑等內容。',
-        content: [
-          '香港公眾健康技術研究中心近日舉辦首場公眾健康技術交流座談會，邀請來自醫學、生物學、統計學、數據分析等不同領域的專業人士圍繞公眾健康技術創新與應用展開交流。座談會聚焦疾病防控需求、智能技術應用、科研協作模式以及成果轉化路徑等內容，與會人員就中心未來研究布局及合作方向提出建議。',
-          '中心表示，舉辦交流座談活動旨在充分發揮平台優勢，促進跨學科資源聚合與觀點碰撞，並為後續研究項目設計、人才引進及合作拓展積累有益經驗。未來，中心將繼續定期組織不同形式的交流活動，推動建立更為開放、務實的合作環境。'
-        ]
-      }
-    ];
-
-    const newsPerPage = 4;
-    let currentNewsPage = 1;
-    let currentNewsIndex = 0;
-
-    function showPage(pageName) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-
-      const target = document.getElementById('page-' + pageName);
-      const btn = document.querySelector('.nav button[data-page="' + pageName + '"]');
-
-      if (target) target.classList.add('active');
-      if (btn) btn.classList.add('active');
-
-      document.getElementById('navWrap').classList.remove('open');
-
-      if (pageName === 'news') {
-        renderNewsList();
-        renderNewsDetail(currentNewsIndex);
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      location.hash = pageName;
-    }
-
-    function toggleMenu() {
-      document.getElementById('navWrap').classList.toggle('open');
-    }
-
-    function renderHomeNews() {
-      const grid = document.getElementById('homeNewsGrid');
-      if (!grid) return;
-
-      const feature = newsItems[0];
-      const others = newsItems.slice(1, 6);
-
-      grid.innerHTML = `
-        <article class="news-feature" onclick="goToNews(0)">
-          <div class="news-feature-img">— HKPHTRC · Newsroom —</div>
-          <div class="news-feature-body">
-            <div class="news-tag">${feature.categoryEn} · ${feature.category}</div>
-            <div class="news-date">${feature.date}</div>
-            <h3>${feature.title}</h3>
-            <p>${feature.summary}</p>
-            <button class="read-more">Read More →</button>
-          </div>
-        </article>
-        <div class="news-list-mini">
-          ${others.slice(0, 3).map((n) => {
-            const idx = newsItems.indexOf(n);
-            return `
-              <div class="news-mini-item" onclick="goToNews(${idx})">
-                <div class="news-tag">${n.categoryEn}</div>
-                <h4>${n.title}</h4>
-                <div class="news-mini-date">${n.date}</div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-        <div class="news-list-mini">
-          ${others.slice(3).map((n) => {
-            const idx = newsItems.indexOf(n);
-            return `
-              <div class="news-mini-item" onclick="goToNews(${idx})">
-                <div class="news-tag">${n.categoryEn}</div>
-                <h4>${n.title}</h4>
-                <div class="news-mini-date">${n.date}</div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      `;
-    }
-
-    function goToNews(idx) {
-      currentNewsIndex = idx;
-      currentNewsPage = Math.floor(idx / newsPerPage) + 1;
-      showPage('news');
-    }
-
-    function renderNewsList() {
-      const totalPages = Math.max(1, Math.ceil(newsItems.length / newsPerPage));
-
-      if (currentNewsPage < 1) currentNewsPage = 1;
-      if (currentNewsPage > totalPages) currentNewsPage = totalPages;
-
-      const start = (currentNewsPage - 1) * newsPerPage;
-      const end = start + newsPerPage;
-      const visible = newsItems.slice(start, end);
-
-      const list = document.getElementById('newsList');
-      if (!list) return;
-
-      list.innerHTML = '';
-
-      visible.forEach((item, idx) => {
-        const realIdx = start + idx;
-        const div = document.createElement('div');
-
-        div.className = 'news-article' + (realIdx === currentNewsIndex ? ' active' : '');
-        div.onclick = () => {
-          currentNewsIndex = realIdx;
-          renderNewsList();
-          renderNewsDetail(realIdx);
-        };
-
-        div.innerHTML = `
-          <div class="news-article-meta">
-            <span class="news-article-cat">${item.categoryEn} · ${item.category}</span>
-            <span class="news-article-meta-divider">|</span>
-            <span class="news-article-date">${item.date}</span>
-          </div>
-          <h3>${item.title}</h3>
-        `;
-
-        list.appendChild(div);
-      });
-
-      document.getElementById('paginationInfo').textContent = `Page ${currentNewsPage} of ${totalPages}`;
-      document.getElementById('prevPageBtn').disabled = currentNewsPage === 1;
-      document.getElementById('nextPageBtn').disabled = currentNewsPage === totalPages;
-    }
-
-    function renderNewsDetail(idx) {
-      const item = newsItems[idx];
-      if (!item) return;
-
-      document.getElementById('newsDetailMeta').textContent = `${item.categoryEn} · ${item.category}  ·  ${item.date}`;
-      document.getElementById('newsDetailTitle').textContent = item.title;
-      document.getElementById('newsDetailContent').innerHTML = item.content.map(p => `<p>${p}</p>`).join('');
-    }
-
-    function changeNewsPage(dir) {
-      const totalPages = Math.ceil(newsItems.length / newsPerPage);
-      const next = currentNewsPage + dir;
-
-      if (next < 1 || next > totalPages) return;
-
-      currentNewsPage = next;
-      currentNewsIndex = (currentNewsPage - 1) * newsPerPage;
-
-      renderNewsList();
-      renderNewsDetail(currentNewsIndex);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const valid = ['home', 'about', 'research', 'services', 'experts', 'news', 'contact'];
-      const hash = location.hash.replace('#', '');
-
-      renderHomeNews();
-      renderNewsList();
-      renderNewsDetail(0);
-
-      showPage(valid.includes(hash) ? hash : 'home');
-    });
-  </script>
-</body>
-</html>
+      color: var(--accent);
+      margin
