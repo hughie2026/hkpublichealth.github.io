@@ -1,5 +1,5 @@
 /* ================================================================
-   HKPHTRC — Rockefeller-inspired Stylesheet
+   HKPHTRC — Stylesheet (Heiti / 黑體版)
    ================================================================ */
 :root {
   --black: #000;
@@ -18,10 +18,20 @@
   --accent: #8B0000;
   --accent-light: #a52a2a;
   --gold: #c5a55a;
+
+  /* 英文襯線（用於斜體裝飾）*/
   --serif-en: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --serif-cn: 'Noto Serif TC', '宋体', SimSun, serif;
+  /* 英文無襯線 */
   --sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --sans-cn: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
+  /* 中文：統一使用黑體 */
+  --cn: 'PingFang TC', 'PingFang SC', '苹方', '微軟正黑體', 'Microsoft JhengHei',
+        'Microsoft YaHei', '微软雅黑', 'Heiti TC', 'Heiti SC',
+        '黑体', SimHei, 'Noto Sans TC', 'Noto Sans SC', sans-serif;
+
+  /* 別名（向後兼容）*/
+  --serif-cn: var(--cn);
+  --sans-cn: var(--cn);
+
   --max-width: 1400px;
   --content-width: 900px;
   --ease: cubic-bezier(.25,.46,.45,.94);
@@ -30,7 +40,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body {
-  font-family: var(--sans-cn);
+  font-family: var(--cn);
   color: var(--dark);
   background: var(--white);
   line-height: 1.7;
@@ -83,26 +93,32 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 88px;
 }
-.brand { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+
+/* 長方形 logo */
+.brand { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
 .brand-logo {
-  width: 50px; height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: var(--off-white);
-  display: flex; align-items: center; justify-content: center;
-  border: 2px solid var(--accent);
-  font-family: var(--serif-en);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
-.brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+.brand-logo img {
+  height: 56px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.brand-text {
+  border-left: 1px solid var(--border);
+  padding-left: 18px;
+  line-height: 1.3;
+}
 .brand-text-cn {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   letter-spacing: .06em;
 }
@@ -112,15 +128,16 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .main-nav { display: flex; align-items: center; }
 .main-nav a {
-  font-family: var(--sans-cn);
+  font-family: var(--cn);
   font-size: .85rem;
+  font-weight: 500;
   color: var(--gray-dark);
-  padding: 28px 18px;
+  padding: 32px 18px;
   position: relative;
   letter-spacing: .04em;
   display: block;
@@ -138,11 +155,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .main-nav a:hover { color: var(--near-black); }
 .main-nav a:hover::after,
 .main-nav a.active::after { transform: scaleX(1); }
-.main-nav a.active { color: var(--near-black); font-weight: 500; }
+.main-nav a.active { color: var(--near-black); font-weight: 700; }
 .nav-en {
   display: block;
   font-family: var(--sans-en);
   font-size: .58rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: .12em;
   color: var(--gray-light);
@@ -179,7 +197,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   content: '';
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     radial-gradient(circle at 80% 20%, rgba(255,255,255,.04) 0%, transparent 40%),
     radial-gradient(circle at 20% 80%, rgba(197,165,90,.06) 0%, transparent 40%);
 }
@@ -205,11 +223,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
 
 .hero h1 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: clamp(2rem, 4.5vw, 3.6rem);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
-  line-height: 1.35;
+  line-height: 1.4;
   max-width: 800px;
   margin-bottom: 32px;
   letter-spacing: .02em;
@@ -222,7 +240,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .hero-desc {
   font-size: 1rem;
-  line-height: 1.9;
+  line-height: 1.95;
   color: rgba(255,255,255,.72);
   max-width: 620px;
   margin-bottom: 44px;
@@ -264,6 +282,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   align-items: center;
   gap: 8px;
   transition: gap .3s ease;
+  font-weight: 500;
 }
 .btn-text:hover { gap: 14px; }
 
@@ -307,16 +326,8 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .section-lg { padding: 130px 0; }
 .section-alt { background: var(--warm-white); }
 .section-dark { background: var(--near-black); color: var(--white); }
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 48px;
-}
-.container-narrow {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 48px;
-}
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 48px; }
+.container-narrow { max-width: var(--content-width); margin: 0 auto; padding: 0 48px; }
 
 .section-label {
   font-family: var(--sans-en);
@@ -328,17 +339,18 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   display: flex;
   align-items: center;
   gap: 14px;
+  font-weight: 500;
 }
 .section-label::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
 .section-dark .section-label { color: var(--gold); }
 .section-dark .section-label::before { background: var(--gold); }
 
 .section-title {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: clamp(1.7rem, 2.8vw, 2.5rem);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
-  line-height: 1.35;
+  line-height: 1.4;
   margin-bottom: 22px;
   letter-spacing: .02em;
 }
@@ -353,7 +365,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
 .section-subtitle {
   font-size: .98rem;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--gray);
   max-width: 640px;
   font-weight: 300;
@@ -407,10 +419,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .breadcrumb .sep { margin: 0 12px; color: var(--gray-dark); }
 
 .page-banner h1 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: clamp(2.4rem, 5vw, 3.8rem);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 700;
+  line-height: 1.3;
   letter-spacing: .02em;
   max-width: 900px;
   margin-bottom: 20px;
@@ -465,6 +477,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   color: var(--border);
   margin-bottom: 24px;
   transition: color .3s;
+  font-style: italic;
 }
 .pillar-card:hover .pillar-num { color: var(--accent); }
 .pillar-en {
@@ -476,16 +489,16 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   margin-bottom: 10px;
 }
 .pillar-card h3 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.18rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   margin-bottom: 14px;
   line-height: 1.5;
 }
 .pillar-card p {
   font-size: .88rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--gray);
   font-weight: 300;
 }
@@ -506,9 +519,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   padding: 80px;
 }
 .split-quote {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.5rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--white);
   font-weight: 400;
   position: relative;
@@ -541,16 +554,16 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   background: var(--warm-white);
 }
 .split-text h2 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   margin-bottom: 24px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 .split-text p {
   font-size: .95rem;
-  line-height: 1.9;
+  line-height: 1.95;
   color: var(--gray);
   margin-bottom: 18px;
   font-weight: 300;
@@ -599,20 +612,21 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 18px;
+  font-weight: 500;
 }
 .news-card-featured .news-category { color: var(--gold); }
 .news-card h3 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.55;
+  font-weight: 700;
+  line-height: 1.6;
   margin-bottom: 14px;
   color: var(--near-black);
 }
-.news-card-featured h3 { font-size: 1.5rem; color: var(--white); line-height: 1.45; }
+.news-card-featured h3 { font-size: 1.5rem; color: var(--white); line-height: 1.5; }
 .news-card p {
   font-size: .86rem;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--gray);
   flex: 1;
   font-weight: 300;
@@ -629,11 +643,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   align-items: center;
   gap: 8px;
   transition: gap .3s;
+  font-weight: 500;
 }
 .news-card:hover .news-read-more { gap: 14px; }
 .news-card-featured .news-read-more { color: var(--gold); }
 
-/* ========== EXPERTS ========== */
+/* ========== EXPERTS — 3:4 真實照片 ========== */
 .experts-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -642,25 +657,55 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   border-left: 1px solid var(--border);
 }
 .expert-card {
-  padding: 48px 32px;
+  padding: 40px 28px 44px;
   text-align: center;
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   transition: all .35s ease;
+  display: flex;
+  flex-direction: column;
 }
 .expert-card:hover { background: var(--warm-white); }
-.expert-avatar {
-  width: 130px; height: 130px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #e8e4dc, #d4cfc5);
+
+.expert-photo {
+  width: 170px;
+  aspect-ratio: 3 / 4;
   margin: 0 auto 26px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif-cn);
-  font-size: 1.7rem;
-  color: var(--gray);
-  border: 3px solid var(--white);
-  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+  background: var(--off-white);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border);
 }
+.expert-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 3px solid var(--accent);
+  pointer-events: none;
+}
+.expert-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  transition: transform .6s var(--ease);
+}
+.expert-card:hover .expert-photo img { transform: scale(1.04); }
+
+.expert-photo.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f1e6, #e8e2d2);
+}
+.expert-photo.placeholder::before {
+  content: "+";
+  font-family: var(--serif-en);
+  font-size: 4rem;
+  color: var(--gold);
+  font-weight: 300;
+}
+
 .expert-index {
   font-family: var(--sans-en);
   font-size: .65rem;
@@ -668,13 +713,15 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--gray-light);
   margin-bottom: 10px;
+  font-weight: 500;
 }
 .expert-card h4 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   margin-bottom: 8px;
+  letter-spacing: .03em;
 }
 .expert-role {
   font-family: var(--sans-en);
@@ -682,11 +729,23 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+}
+.expert-field-label {
+  font-family: var(--sans-en);
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 .expert-desc {
-  font-size: .82rem;
-  line-height: 1.75;
+  font-size: .85rem;
+  line-height: 1.8;
   color: var(--gray);
   font-weight: 300;
 }
@@ -719,15 +778,16 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   font-family: var(--serif-en);
   font-size: 3rem;
   font-weight: 400;
+  font-style: italic;
   color: var(--border);
   margin-bottom: 20px;
   line-height: 1;
 }
 .service-card:hover .service-num { color: var(--accent); }
 .service-card h3 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   margin-bottom: 10px;
 }
@@ -741,25 +801,25 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .service-card p {
   font-size: .9rem;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--gray);
   margin-bottom: 22px;
   font-weight: 300;
 }
 .service-card ul { list-style: none; }
 .service-card ul li {
-  font-size: .84rem;
+  font-size: .88rem;
   color: var(--gray-dark);
-  padding: 8px 0 8px 18px;
+  padding: 10px 0 10px 18px;
   position: relative;
-  font-weight: 300;
+  font-weight: 400;
   border-bottom: 1px solid var(--border);
 }
 .service-card ul li:last-child { border-bottom: none; }
 .service-card ul li::before {
   content: '';
   position: absolute;
-  left: 0; top: 17px;
+  left: 0; top: 19px;
   width: 8px; height: 1px;
   background: var(--accent);
 }
@@ -773,7 +833,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .article-sidebar {
   position: sticky;
-  top: 120px;
+  top: 130px;
 }
 .toc-label {
   font-family: var(--sans-en);
@@ -784,6 +844,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   padding-bottom: 16px;
   border-bottom: 1px solid var(--accent);
   margin-bottom: 20px;
+  font-weight: 500;
 }
 .toc { list-style: none; }
 .toc li {
@@ -818,18 +879,19 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 18px;
+  font-weight: 500;
 }
 .article-block h2 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.9rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
-  line-height: 1.4;
+  line-height: 1.45;
   margin-bottom: 28px;
 }
 .article-block p {
   font-size: .98rem;
-  line-height: 1.95;
+  line-height: 2;
   color: var(--gray-dark);
   margin-bottom: 18px;
   font-weight: 300;
@@ -841,12 +903,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   font-size: .94rem;
   color: var(--gray-dark);
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 .article-block ul li::before {
   content: '';
   position: absolute;
-  left: 0; top: 22px;
+  left: 0; top: 24px;
   width: 12px; height: 1px;
   background: var(--accent);
 }
@@ -862,16 +924,15 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .timeline-item:last-child { border-bottom: 1px solid var(--border); }
 .timeline-year {
-  font-family: var(--serif-en);
-  font-size: 1.15rem;
-  font-weight: 500;
+  font-family: var(--cn);
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--accent);
-  font-style: italic;
 }
 .timeline-text {
   font-size: .92rem;
   color: var(--gray);
-  line-height: 1.8;
+  line-height: 1.85;
   font-weight: 300;
 }
 
@@ -896,18 +957,19 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 14px;
+  font-weight: 500;
 }
 .gov-card h4 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   margin-bottom: 10px;
 }
 .gov-card p {
   font-size: .82rem;
   color: var(--gray);
-  line-height: 1.75;
+  line-height: 1.8;
   font-weight: 300;
 }
 
@@ -930,9 +992,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   font-style: italic;
 }
 .research-row h3 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   margin-bottom: 8px;
 }
@@ -945,7 +1007,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .research-row p {
   font-size: .92rem;
-  line-height: 1.85;
+  line-height: 1.9;
   color: var(--gray-dark);
   margin-bottom: 18px;
   font-weight: 300;
@@ -986,7 +1048,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .method-item p {
   font-size: .85rem;
   color: var(--gray);
-  line-height: 1.7;
+  line-height: 1.75;
   font-weight: 300;
 }
 
@@ -1005,14 +1067,15 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 30px;
+  font-weight: 500;
 }
 .partners-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px 36px;
-  font-family: var(--serif-cn);
-  font-size: 1.1rem;
+  font-family: var(--cn);
+  font-size: 1.05rem;
   font-weight: 500;
   color: rgba(255,255,255,.85);
 }
@@ -1025,9 +1088,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   gap: 80px;
 }
 .contact-info h2 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--near-black);
   margin-bottom: 8px;
 }
@@ -1038,6 +1101,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 36px;
+  font-weight: 500;
 }
 .contact-row {
   display: grid;
@@ -1055,8 +1119,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   padding-top: 3px;
+  font-weight: 500;
 }
-.contact-row .value { color: var(--gray-dark); line-height: 1.7; font-weight: 300; }
+.contact-row .value { color: var(--gray-dark); line-height: 1.75; font-weight: 400; }
 .contact-row .value a:hover { color: var(--accent); }
 
 .contact-form {
@@ -1065,9 +1130,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   border-top: 4px solid var(--accent);
 }
 .contact-form h3 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 .contact-form .form-en {
@@ -1077,6 +1142,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 30px;
+  font-weight: 500;
 }
 .form-row {
   display: grid;
@@ -1093,6 +1159,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--gray);
   margin-bottom: 8px;
+  font-weight: 500;
 }
 .form-group input,
 .form-group textarea,
@@ -1101,7 +1168,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   padding: 13px 16px;
   border: 1px solid var(--border);
   background: var(--white);
-  font-family: var(--sans-cn);
+  font-family: var(--cn);
   font-size: .92rem;
   color: var(--dark);
   transition: border-color .3s ease;
@@ -1133,11 +1200,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 16px;
+  font-weight: 500;
 }
 .branch h4 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 6px;
   color: var(--near-black);
 }
@@ -1188,12 +1256,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   display: flex;
   gap: 14px;
 }
-.news-list-meta .cat { color: var(--accent); }
+.news-list-meta .cat { color: var(--accent); font-weight: 500; }
 .news-list-item h3 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.55;
+  font-weight: 700;
+  line-height: 1.6;
   color: var(--near-black);
 }
 
@@ -1202,7 +1270,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   padding: 56px 50px;
   border-top: 4px solid var(--accent);
   position: sticky;
-  top: 120px;
+  top: 130px;
   align-self: start;
 }
 .news-detail-meta {
@@ -1212,12 +1280,13 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 18px;
+  font-weight: 500;
 }
 .news-detail h2 {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.7rem;
-  font-weight: 600;
-  line-height: 1.4;
+  font-weight: 700;
+  line-height: 1.45;
   margin-bottom: 24px;
   color: var(--near-black);
 }
@@ -1228,7 +1297,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 }
 .news-detail p {
   font-size: .96rem;
-  line-height: 1.95;
+  line-height: 2;
   color: var(--gray-dark);
   margin-bottom: 18px;
   font-weight: 300;
@@ -1251,6 +1320,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   padding: 10px 18px;
   border: 1px solid var(--border);
   transition: all .3s ease;
+  font-weight: 500;
 }
 .pagination button:hover:not(:disabled) {
   border-color: var(--accent);
@@ -1279,10 +1349,10 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   margin-bottom: 20px;
 }
 .quote-text {
-  font-family: var(--serif-cn);
-  font-size: 1.6rem;
+  font-family: var(--cn);
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.85;
   color: var(--white);
   margin-bottom: 30px;
   letter-spacing: .02em;
@@ -1293,6 +1363,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--gold);
+  font-weight: 500;
 }
 .quote-author span {
   display: block;
@@ -1314,9 +1385,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   margin-bottom: 60px;
 }
 .footer-brand-cn {
-  font-family: var(--serif-cn);
+  font-family: var(--cn);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
   margin-bottom: 6px;
 }
@@ -1327,10 +1398,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 22px;
+  font-weight: 500;
 }
 .footer-desc {
   font-size: .85rem;
-  line-height: 1.85;
+  line-height: 1.9;
   color: rgba(255,255,255,.55);
   font-weight: 300;
 }
@@ -1343,6 +1415,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   margin-bottom: 24px;
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(255,255,255,.15);
+  font-weight: 500;
 }
 .footer-col ul { list-style: none; }
 .footer-col ul li {
@@ -1371,7 +1444,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   font-family: var(--serif-en);
   font-style: italic;
   color: var(--gold);
-  font-size: .8rem;
+  font-size: .85rem;
   letter-spacing: .12em;
 }
 
@@ -1399,8 +1472,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 @media (max-width: 768px) {
   .utility-bar, .header-inner, .container, .container-narrow,
   .hero-content, .hero-stats { padding-left: 24px; padding-right: 24px; }
-  .header-inner { height: 64px; }
-  .main-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); flex-direction: column; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+  .header-inner { height: 70px; }
+  .brand-logo, .brand-logo img { height: 44px; }
+  .brand-text { padding-left: 14px; }
+  .brand-text-cn { font-size: .98rem; }
+  .brand-text-en { font-size: .55rem; }
+  .main-nav { display: none; position: absolute; top: 70px; left: 0; right: 0; background: var(--white); flex-direction: column; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
   .main-nav.open { display: flex; }
   .main-nav a { padding: 16px 24px; border-bottom: 1px solid var(--border); width: 100%; text-align: left; }
   .main-nav a::after { display: none; }
@@ -1421,4 +1498,5 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   .hero-stat:first-child { border-top: none; }
   .page-banner { padding: 90px 0 60px; }
   .utility-inner { font-size: .64rem; }
+  .expert-photo { width: 150px; }
 }
