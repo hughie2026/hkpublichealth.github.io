@@ -8,940 +8,275 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black: #000000;
-      --near-black: #111111;
-      --dark: #1a1a1a;
-      --charcoal: #2c2c2c;
-      --gray-dark: #444444;
-      --gray: #666666;
-      --gray-mid: #888888;
-      --gray-light: #aaaaaa;
-      --gray-lighter: #cccccc;
-      --border: #e0e0e0;
-      --off-white: #f5f5f5;
-      --warm-white: #faf9f7;
-      --white: #ffffff;
-      --accent: #8B0000;
-      --accent-light: #a52a2a;
-      --gold: #c5a55a;
-      --serif-en: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
-      --serif-cn: 'Noto Serif TC', '宋体', 'SimSun', serif;
-      --sans-en: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
-      --sans-cn: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
-      --max-width: 1400px;
-      --content-width: 900px;
-      --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: var(--sans-cn);
-      color: var(--dark);
-      background: var(--white);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    em, i { font-style: normal; }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    img { max-width: 100%; display: block; }
-
-    button {
-      font-family: inherit;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-
-    /* ========== UTILITY BAR (Top) ========== */
-    .utility-bar {
-      background: var(--near-black);
-      color: var(--gray-lighter);
-      font-family: var(--sans-en);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 8px 0;
-      position: relative;
-      z-index: 1000;
-    }
-
-    .utility-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .utility-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .utility-links a {
-      color: var(--gray-light);
-      transition: color 0.2s;
-    }
-
-    .utility-links a:hover { color: var(--white); }
-
-    .utility-divider {
-      width: 1px;
-      height: 10px;
-      background: var(--gray-dark);
-    }
-
-    /* ========== HEADER ========== */
-    .site-header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .site-header.scrolled {
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-    }
-
-    .header-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 80px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-
-    .brand-logo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--off-white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--accent);
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-logo-placeholder {
-      font-family: var(--serif-en);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .brand-text-cn {
-      font-family: var(--serif-cn);
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--near-black);
-      letter-spacing: 0.06em;
-    }
-
-    .brand-text-en {
-      font-family: var(--sans-en);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 2px;
-    }
-
-    /* Nav */
-    .main-nav {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-
-    .main-nav button {
-      font-family: var(--sans-cn);
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--gray-dark);
-      padding: 28px 20px;
-      position: relative;
-      letter-spacing: 0.04em;
-      transition: color 0.3s ease;
-    }
-
-    .main-nav button::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 20px;
-      right: 20px;
-      height: 2px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.3s var(--transition);
-    }
-
-    .main-nav button:hover { color: var(--near-black); }
-    .main-nav button:hover::after,
-    .main-nav button.active::after { transform: scaleX(1); }
-    .main-nav button.active { color: var(--near-black); font-weight: 500; }
-
-    .nav-en-label {
-      display: block;
-      font-family: var(--sans-en);
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--gray-light);
-      margin-top: 2px;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-family: var(--sans-en);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dark);
-      padding: 10px;
-    }
-
-    /* ========== HERO — Full bleed Rockefeller style ========== */
-    .hero {
-      position: relative;
-      height: 92vh;
-      min-height: 600px;
-      max-height: 1000px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      background: var(--near-black);
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg,
-          rgba(10,20,40,0.85) 0%,
-          rgba(20,40,60,0.7) 30%,
-          rgba(40,60,80,0.5) 60%,
-          rgba(60,80,100,0.4) 100%
-        ),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%23061428"/><stop offset="50%25" style="stop-color:%230d2847"/><stop offset="100%25" style="stop-color:%23183a5e"/></linearGradient></defs><rect fill="url(%23g)" width="1200" height="800"/><circle cx="900" cy="200" r="300" fill="rgba(255,255,255,0.02)"/><circle cx="200" cy="600" r="200" fill="rgba(255,255,255,0.015)"/></svg>');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 48px 80px;
-      width: 100%;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--sans-en);
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .hero h1 {
-      font-family: var(--serif-cn);
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.35;
-      max-width: 750px;
-      margin-bottom: 28px;
-      letter-spacing: 0.02em;
-    }
-
-    .hero h1 em {
-      font-family: var(--serif-en);
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-desc {
-      font-family: var(--sans-cn);
-      font-size: 1rem;
-      line-height: 1.9;
-      color: rgba(255,255,255,0.7);
-      max-width: 620px;
-      margin-bottom: 40px;
-      font-weight: 300;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      font-family: var(--sans-en);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 14px 32px;
-      transition: all 0.35s var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-primary {
-      background: var(--white);
-      color: var(--near-black);
-    }
-
-    .btn-primary:hover {
-      background: var(--gold);
-      color: var(--white);
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,0.4);
-      color: var(--white);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--white);
-      background: rgba(255,255,255,0.08);
-    }
-
-    .btn-dark {
-      background: var(--near-black);
-      color: var(--white);
-    }
-
-    .btn-dark:hover {
-      background: var(--accent);
-    }
-
-    .btn-text {
-      color: var(--accent);
-      font-family: var(--sans-en);
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 8px 0;
-      border-bottom: 1px solid transparent;
-      transition: all 0.3s ease;
-    }
-
-    .btn-text:hover {
-      border-bottom-color: var(--accent);
-    }
-
-    .hero-stats {
-      position: absolute;
-      right: 48px;
-      bottom: 80px;
-      display: flex;
-      gap: 0;
-      z-index: 2;
-    }
-
-    .hero-stat {
-      padding: 20px 36px;
-      border-left: 1px solid rgba(255,255,255,0.15);
-      text-align: center;
-    }
-
-    .hero-stat:first-child { border-left: none; }
-
-    .hero-stat-val {
-      font-family: var(--serif-en);
-      font-size: 2rem;
-      font-weight: 400;
-      color: var(--white);
-      display: block;
-    }
-
-    .hero-stat-label {
-      font-family: var(--sans-en);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-top: 4px;
-      display: block;
-    }
-
-    /* ========== SECTIONS ========== */
-    .section {
-      padding: 100px 0;
-    }
-
-    .section-lg { padding: 120px 0; }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    .container-narrow {
-      max-width: var(--content-width);
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    /* Section headers — Rockefeller style */
-    .section-label {
-      font-family: var(--sans-en);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    .section-title {
-      font-family: var(--serif-cn);
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 600;
-      color: var(--near-black);
-      line-height: 1.35;
-      margin-bottom: 20px;
-      letter-spacing: 0.02em;
-    }
-
-    .section-title em {
-      font-family: var(--serif-en);
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .section-subtitle {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--gray);
-      max-width: 640px;
-      font-weight: 300;
-    }
-
-    .section-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: end;
-      margin-bottom: 64px;
-    }
-
-    .section-header-full {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 64px;
-    }
-
-    .section-header-full .section-label {
-      justify-content: center;
-    }
-
-    .section-header-full .section-label::before { display: none; }
-
-    .section-header-full .section-subtitle {
-      margin: 0 auto;
-    }
-
-    /* ========== PILLAR / RESEARCH CARDS — Grid ========== */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-    }
-
-    .pillar-card {
-      background: var(--white);
-      padding: 48px 40px;
-      cursor: pointer;
-      transition: all 0.4s var(--transition);
-      position: relative;
-    }
-
-    .pillar-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s var(--transition);
-    }
-
-    .pillar-card:hover {
-      background: var(--warm-white);
-    }
-
-    .pillar-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .pillar-num {
-      font-family: var(--serif-en);
-      font-size: 2.4rem;
-      font-weight: 400;
-      color: var(--border);
-      margin-bottom: 20px;
-      transition: color 0.3s;
-    }
-
-    .pillar-card:hover .pillar-num { color: var(--accent); }
-
-    .pillar-en {
-      font-family: var(--sans-en);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray-light);
-      margin-bottom: 10px;
-    }
-
-    .pillar-card h3 {
-      font-family: var(--serif-cn);
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--near-black);
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-
-    .pillar-card p {
-      font-size: 0.88rem;
-      line-height: 1.75;
-      color: var(--gray);
-      font-weight: 300;
-    }
-
-    /* ========== ABOUT / MISSION — Split layout ========== */
-    .split-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 500px;
-    }
-
-    .split-image {
-      background:
-        linear-gradient(to right, rgba(10,20,40,0.7), rgba(10,20,40,0.3)),
-        linear-gradient(135deg, #0d2847, #183a5e);
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 80px;
-    }
-
-    .split-quote {
-      font-family: var(--serif-cn);
-      font-size: 1.6rem;
-      line-height: 1.6;
-      color: var(--white);
-      font-weight: 400;
-      position: relative;
-    }
-
-    .split-quote::before {
-      content: '"';
-      font-family: var(--serif-en);
-      font-size: 6rem;
-      color: var(--gold);
-      position: absolute;
-      top: -40px;
-      left: -10px;
-      line-height: 1;
-      opacity: 0.6;
-    }
-
-    .split-quote cite {
-      display: block;
-      margin-top: 24px;
-      font-family: var(--sans-en);
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .split-text {
-      padding: 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--warm-white);
-    }
-
-    .split-text .section-label { margin-bottom: 20px; }
-
-    .split-text h2 {
-      font-family: var(--serif-cn);
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--near-black);
-      margin-bottom: 24px;
-      line-height: 1.4;
-    }
-
-    .split-text p {
-      font-size: 0.95rem;
-      line-height: 1.9;
-      color: var(--gray);
-      margin-bottom: 16px;
-      font-weight: 300;
-    }
-
-    .split-text p:last-of-type { margin-bottom: 32px; }
-
-    /* ========== NEWS — Rockefeller editorial style ========== */
-    .news-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 0;
-    }
-
-    .news-card {
-      border: 1px solid var(--border);
-      margin: -1px 0 0 -1px;
-      padding: 40px;
-      cursor: pointer;
-      transition: all 0.35s var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .news-card:hover {
-      background: var(--warm-white);
-      z-index: 1;
-    }
-
-    .news-card-featured {
-      grid-row: span 2;
-      background: var(--near-black);
-      color: var(--white);
-      padding: 48px;
-    }
-
-    .news-card-featured:hover {
-      background: var(--charcoal);
-    }
-
-    .news-date {
-      font-family: var(--sans-en);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-light);
-      margin-bottom: 8px;
-    }
-
-    .news-card-featured .news-date { color: var(--gold); }
-
-    .news-category {
-      font-family: var(--sans-en);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .news-card-featured .news-category { color: var(--gold); }
-
-    .news-card h3 {
-      font-family: var(--serif-cn);
-      font-size: 1.05rem;
-      font-weight: 600;
-      line-height: 1.55;
-      margin-bottom: 14px;
-      color: var(--near-black);
-    }
-
-    .news-card-featured h3 {
-      font-size: 1.4rem;
-      color: var(--white);
-    }
-
-    .news-card p {
-      font-size: 0.85rem;
-      line-height: 1.75;
-      color: var(--gray);
-      flex: 1;
-      font-weight: 300;
-    }
-
-    .news-card-featured p { color: rgba(255,255,255,0.6); }
-
-    .news-read-more {
-      font-family: var(--sans-en);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-top: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .news-card-featured .news-read-more { color: var(--gold); }
-
-    /* ========== EXPERTS ========== */
-    .experts-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-    }
-
-    .expert-card {
-      text-align: center;
-      padding: 40px 24px;
-      transition: all 0.35s ease;
-    }
-
-    .expert-card:hover {
-      background: var(--warm-white);
-    }
-
-    .expert-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #e8e4dc, #d4cfc5);
-      margin: 0 auto 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif-cn);
-      font-size: 1.6rem;
-      color: var(--gray);
-      border: 3px solid var(--white);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-
-    .expert-card h4 {
-      font-family: var(--serif-cn);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--near-black);
-      margin-bottom: 6px;
-    }
-
-    .expert-role {
-      font-family: var(--sans-en);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .expert-desc {
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: var(--gray);
-      font-weight: 300;
-    }
-
-    /* ========== SERVICES ========== */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-    }
-
-    .service-card {
-      padding: 56px 48px;
-      border: 1px solid var(--border);
-      margin: -1px 0 0 -1px;
-      transition: all 0.35s ease;
-      position: relative;
-    }
-
-    .service-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.5s var(--transition);
-    }
-
-    .service-card:hover::after { width: 100%; }
-    .service-card:hover { background: var(--warm-white); }
-
-    .service-num {
-      font-family: var(--serif-en);
-      font-size: 3rem;
-      font-weight: 400;
-      color: var(--border);
-      margin-bottom: 16px;
-      line-height: 1;
-    }
-
-    .service-card:hover .service-num { color: var(--accent); }
-
-    .service-card h3 {
-      font-family: var(--serif-cn);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--near-black);
-      margin-bottom: 8px;
-    }
-
-    .service-en {
-      font-family: var(--sans-en);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gray-light);
-      margin-bottom: 16px;
-    }
-
-    .service-card p {
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: var(--gray);
-      margin-bottom: 20px;
-      font-weight: 300;
-    }
-
-    .service-card ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .service-card ul li {
-      font-size: 0.82rem;
-      color: var(--gray);
-      padding: 6px 0;
-      padding-left: 16px;
-      position: relative;
-      font-weight: 300;
-    }
-
-    .service-card ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 13px;
-      width: 6px;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    /* ========== ABOUT PAGE ========== */
-    .article-content {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 80px;
-    }
-
-    .article-sidebar {
-      position: sticky;
-      top: 120px;
-      align-self: start;
-    }
-
-    .toc {
-      list-style: none;
-      padding: 0;
-    }
-
-    .toc li {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--gray);
-      display: flex;
-      gap: 12px;
-    }
-
-    .toc .num {
-      font-family: var(--serif-en);
-      color: var(--accent);
-      font-weight: 500;
-      min-width: 24px;
-    }
-
-    .article-block {
-      margin-bottom: 64px;
-      padding-bottom: 64px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .article-block:last-child { border-bottom: none; }
-
-    .article-label {
-      font-family: var(--sans-en);
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Utility Bar -->
+  <div class="utility-bar">
+    <div class="utility-inner">
+      <span>Hong Kong Public Health Technology Research Center · Established 2025</span>
+      <div class="utility-links">
+        <a href="#">繁體</a>
+        <span class="utility-divider"></span>
+        <a href="#">English</a>
+        <span class="utility-divider"></span>
+        <a href="mailto:service@epidemiology.hk">service@epidemiology.hk</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-logo">HK</div>
+        <div>
+          <div class="brand-text-cn">香港公眾健康技術研究中心</div>
+          <div class="brand-text-en">Public Health Technology · Research Center</div>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">首頁<span class="nav-en">Home</span></a>
+        <a href="about.html">中心概覽<span class="nav-en">About</span></a>
+        <a href="research.html">研究領域<span class="nav-en">Research</span></a>
+        <a href="services.html">服務與合作<span class="nav-en">Services</span></a>
+        <a href="experts.html">專家顧問<span class="nav-en">Experts</span></a>
+        <a href="news.html">新聞動態<span class="nav-en">News</span></a>
+        <a href="contact.html">聯絡我們<span class="nav-en">Contact</span></a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Menu">≡ Menu</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Science for Public Health · 灣區協同 · 健康先行</div>
+      <h1>以跨學科科學方法<br>推進<em>公眾健康技術</em>之循證創新</h1>
+      <p class="hero-desc">
+        香港公眾健康技術研究中心（HKPHTRC）為香港特別行政區政府批准設立、具獨立法人資格之第三方科研機構。中心匯聚粵港澳大灣區公共衛生領域學者，於疾病早期篩查、智能健康監測、新型疾病防控、區域協同治理等方向開展系統性研究與成果轉化。
+      </p>
+      <div class="hero-actions">
+        <a href="research.html" class="btn btn-primary">研究領域 <span class="arrow">→</span></a>
+        <a href="about.html" class="btn btn-outline">了解中心 <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Stats -->
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-val">2025</span>
+      <span class="hero-stat-label">Established · 成立年份</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">06</span>
+      <span class="hero-stat-label">Research Pillars · 研究支柱</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">03</span>
+      <span class="hero-stat-label">Locations · 港 · 穗 · 澳</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">07+</span>
+      <span class="hero-stat-label">Expert Advisors · 顧問團隊</span>
+    </div>
+  </div>
+
+  <!-- Research Pillars -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Research Programmes</div>
+          <h2 class="section-title">面向公共衛生實務的<br><em>核心研究方向</em></h2>
+        </div>
+        <p class="section-subtitle">
+          中心聚焦六大研究支柱，圍繞早期識別、智能監測、防控策略、生物信息、數字健康干預與區域治理，致力以嚴謹的科學方法回應人口健康挑戰，為決策提供循證依據。
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <a href="research.html" class="pillar-card">
+          <div class="pillar-num">01</div>
+          <div class="pillar-en">Early Detection</div>
+          <h3>疾病早期篩查技術</h3>
+          <p>結合新型檢測思路與數據分析方法，探索更高效、更精準的早期發現機制。</p>
+        </a>
+        <a href="research.html" class="pillar-card">
+          <div class="pillar-num">02</div>
+          <div class="pillar-en">Smart Monitoring</div>
+          <h3>智能健康監測系統</h3>
+          <p>運用數據分析、智能模型與監測技術，支持人群健康管理與風險預警。</p>
+        </a>
+        <a href="research.html" class="pillar-card">
+          <div class="pillar-num">03</div>
+          <div class="pillar-en">Disease Control</div>
+          <h3>新型疾病防控策略</h3>
+          <p>面向新發、再發及具公共衛生意義的疾病威脅，研究具前瞻性的防控方案。</p>
+        </a>
+        <a href="research.html" class="pillar-card">
+          <div class="pillar-num">04</div>
+          <div class="pillar-en">Bioinformatics</div>
+          <h3>生物信息學研究</h3>
+          <p>運用生物信息與健康數據分析方法，支持疾病機理、人群特徵與技術評估研究。</p>
+        </a>
+        <a href="research.html" class="pillar-card">
+          <div class="pillar-num">05</div>
+          <div class="pillar-en">Digital Health</div>
+          <h3>數字健康干預技術</h3>
+          <p>探索移動健康、遠程管理及智慧平台在公眾健康服務中的應用模式與效果。</p>
+        </a>
+        <a href="research.html" class="pillar-card">
+          <div class="pillar-num">06</div>
+          <div class="pillar-en">Regional Governance</div>
+          <h3>區域公共衛生協同治理</h3>
+          <p>研究跨區域信息互通、資源協調與應急聯動機制，回應灣區公共衛生協作需求。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Split Section -->
+  <section class="split-section">
+    <div class="split-image">
+      <div class="split-quote">
+        以嚴謹的科學方法、開放的協作精神，回應人口健康挑戰。
+        <cite>— HKPHTRC Mission</cite>
+      </div>
+    </div>
+    <div class="split-text">
+      <div class="section-label">About the Center</div>
+      <h2>立足香港 · 服務灣區<br>面向人類健康未來</h2>
+      <p>
+        中心匯聚流行病學、生物統計、生物信息、健康數據科學與公共政策等多學科力量，致力以嚴謹的科學方法、開放的協作精神，回應人口健康挑戰。
+      </p>
+      <p>
+        我們在香港設立總部，於廣州、澳門設立分中心，構建覆蓋粵港澳大灣區的協同研究網絡，推動科研、政策與實務的深度連結。
+      </p>
+      <a href="about.html" class="btn-text">了解中心概覽 <span>→</span></a>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Newsroom</div>
+          <h2 class="section-title">最新<em>動態</em>與學術交流</h2>
+        </div>
+        <p class="section-subtitle">
+          中心透過學術會議、專題研討、合作對接與科普活動，持續推動公眾健康知識共享與技術傳播。
+          <br><br>
+          <a href="news.html" class="btn-text">瀏覽全部新聞 <span>→</span></a>
+        </p>
+      </div>
+
+      <div class="news-grid">
+        <a href="news.html" class="news-card news-card-featured">
+          <div class="news-date">November 18, 2025</div>
+          <div class="news-category">Institutional · 中心動態</div>
+          <h3>中心發布年度工作進展，持續推進灣區公共衛生科研協作</h3>
+          <p>中心發布年度工作進展摘要，系統梳理科研規劃、團隊建設、學術交流與合作對接等方面的重點工作，並展望未來灣區協同方向。</p>
+          <span class="news-read-more">Read More →</span>
+        </a>
+        <a href="news.html" class="news-card">
+          <div class="news-date">October 22, 2025</div>
+          <div class="news-category">Academic · 學術交流</div>
+          <h3>中心舉辦灣區公共衛生技術前沿研討會</h3>
+          <p>邀請多位學者就健康監測、智能預警等議題交流。</p>
+          <span class="news-read-more">Read More →</span>
+        </a>
+        <a href="news.html" class="news-card">
+          <div class="news-date">September 30, 2025</div>
+          <div class="news-category">Partnership · 合作對接</div>
+          <h3>中心與多家高校及科研機構簽署合作意向</h3>
+          <p>就聯合研究、人才培養、學術會議等方向達成共識。</p>
+          <span class="news-read-more">Read More →</span>
+        </a>
+        <a href="news.html" class="news-card">
+          <div class="news-date">September 12, 2025</div>
+          <div class="news-category">Institutional · 中心動態</div>
+          <h3>廣州、澳門分中心籌備工作正式啟動</h3>
+          <p>進一步夯實大灣區研究網絡布局。</p>
+          <span class="news-read-more">Read More →</span>
+        </a>
+        <a href="news.html" class="news-card">
+          <div class="news-date">August 25, 2025</div>
+          <div class="news-category">Public · 健康科普</div>
+          <h3>中心啟動社區健康素養提升計劃</h3>
+          <p>透過科普講座、主題活動傳播健康理念。</p>
+          <span class="news-read-more">Read More →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="section section-dark">
+    <div class="container-narrow">
+      <div class="quote-block">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">
+          公眾健康的未來，繫於科學的嚴謹、技術的創新，與跨地域協同的智慧。我們以此為使命，為大灣區人口健康貢獻可持續的科研力量。
+        </p>
+        <div class="quote-author">
+          中心學術委員會
+          <span>HKPHTRC Academic Committee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-cn">香港公眾健康技術研究中心</div>
+          <div class="footer-brand-en">HKPHTRC</div>
+          <p class="footer-desc">
+            HKPHTRC 為香港特別行政區政府批准設立之獨立法人科研機構，致力以跨學科科學方法推動公眾健康技術創新與循證決策。
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="index.html">首頁 / Home</a></li>
+            <li><a href="about.html">中心概覽 / About</a></li>
+            <li><a href="research.html">研究領域 / Research</a></li>
+            <li><a href="services.html">服務與合作 / Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Engage</h5>
+          <ul>
+            <li><a href="experts.html">專家顧問 / Experts</a></li>
+            <li><a href="news.html">新聞動態 / News</a></li>
+            <li><a href="contact.html">聯絡我們 / Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Locations</h5>
+          <ul>
+            <li>香港 · Hong Kong (HQ)</li>
+            <li>廣州 · Guangzhou</li>
+            <li>澳門 · Macau</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2025 Hong Kong Public Health Technology Research Center. All rights reserved.</div>
+        <div class="footer-motto">Greater Bay Harmony · Health Future Priority</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
